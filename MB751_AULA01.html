@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Prof.&nbsp;Denise B. Ferrari">
+
+<title>MB-751: Estatística Básica</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="MB751_AULA01_files/libs/clipboard/clipboard.min.js"></script>
+<script src="MB751_AULA01_files/libs/quarto-html/quarto.js"></script>
+<script src="MB751_AULA01_files/libs/quarto-html/popper.min.js"></script>
+<script src="MB751_AULA01_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="MB751_AULA01_files/libs/quarto-html/anchor.min.js"></script>
+<link href="MB751_AULA01_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="MB751_AULA01_files/libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="MB751_AULA01_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="MB751_AULA01_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="MB751_AULA01_files/libs/bootstrap/bootstrap-81e35ebdb4125010edbabe6010586085.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#estatística-e-o-raciocínio-científico" id="toc-estatística-e-o-raciocínio-científico" class="nav-link active" data-scroll-target="#estatística-e-o-raciocínio-científico">Estatística e o Raciocínio Científico</a></li>
+  <li><a href="#o-que-é-estatística" id="toc-o-que-é-estatística" class="nav-link" data-scroll-target="#o-que-é-estatística">O que é Estatística?</a></li>
+  <li><a href="#elementos-fundamentais-em-estatística" id="toc-elementos-fundamentais-em-estatística" class="nav-link" data-scroll-target="#elementos-fundamentais-em-estatística">Elementos Fundamentais em Estatística</a></li>
+  <li><a href="#fontes-de-dados" id="toc-fontes-de-dados" class="nav-link" data-scroll-target="#fontes-de-dados">Fontes de Dados</a></li>
+  <li><a href="#tipos-de-problemas-de-análise-de-dados" id="toc-tipos-de-problemas-de-análise-de-dados" class="nav-link" data-scroll-target="#tipos-de-problemas-de-análise-de-dados">Tipos de Problemas de Análise de Dados</a></li>
+  <li><a href="#probabilidade-inferência-e-dedução" id="toc-probabilidade-inferência-e-dedução" class="nav-link" data-scroll-target="#probabilidade-inferência-e-dedução">Probabilidade, Inferência e Dedução</a></li>
+  <li><a href="#métodos-para-exploração-resumo-e-descrição-de-dados" id="toc-métodos-para-exploração-resumo-e-descrição-de-dados" class="nav-link" data-scroll-target="#métodos-para-exploração-resumo-e-descrição-de-dados">Métodos para Exploração, Resumo e Descrição de Dados</a></li>
+  <li><a href="#resumos-exploratórios" id="toc-resumos-exploratórios" class="nav-link" data-scroll-target="#resumos-exploratórios">Resumos Exploratórios</a>
+  <ul class="collapse">
+  <li><a href="#resumos-unidimensionais" id="toc-resumos-unidimensionais" class="nav-link" data-scroll-target="#resumos-unidimensionais">Resumos Unidimensionais</a></li>
+  <li><a href="#resumos-multidimensionais" id="toc-resumos-multidimensionais" class="nav-link" data-scroll-target="#resumos-multidimensionais">Resumos Multidimensionais</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">MB-751: Estatística Básica</h1>
+<p class="subtitle lead">AULA 01: Introdução ao Raciocínio Estatístico e à Análise de Dados</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor</div>
+    <div class="quarto-title-meta-contents">
+             <p>Prof.&nbsp;Denise B. Ferrari </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Data de Publicação</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">última atualização: 1o. semestre/ 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="estatística-e-o-raciocínio-científico" class="level2">
+<h2 class="anchored" data-anchor-id="estatística-e-o-raciocínio-científico">Estatística e o Raciocínio Científico</h2>
+<p>Engenheiros e cientistas contribuem para o avanço da humanidade de diferentes maneiras. Enquanto cientistas se dedicam a investigar fenômenos para gerar, aprimorar e sistematizar conhecimentos a fim de ampliar nossa compreensão do mundo, engenheiros aplicam esse conhecimento na solução de desafios práticos enfrentados pela sociedade. Embora desempenhem funções diferentes, ambos se apoiam em conjunto estruturado de práticas que garantem o rigor de suas investigações, constituindo o que conhecemos como <strong>método científico</strong>.</p>
+<p>O método científico é um processo lógico e sistemático que orienta a investigação de fenômenos, a construção de conhecimento e a formulação de soluções para problemas complexos. Esse processo iterativo e não linear envolve a observação rigorosa de um fenômeno, a formulação de perguntas científicas, a proposição de hipóteses e sua avaliação por meio de experimentação sistemática e análise de dados. O método científico tem como objetivo chegar a conclusões objetivas e válidas e, para isso, emprega uma combinação de raciocínios dedutivos e indutivos. Embora sua aplicação possa variar conforme o contexto, geralmente segue um conjunto de etapas, descritas a seguir e representadas na <a href="#fig-ch1-metodo-cientifico" class="quarto-xref">Figura&nbsp;1</a>:</p>
+<ol type="1">
+<li>Observação e formulação da pergunta científica;<br>
+</li>
+<li>Elaboração de uma hipótese;<br>
+</li>
+<li>Experimentação, coleta e análise de dados;<br>
+</li>
+<li>Conclusão; e</li>
+<li>Comunicação dos resultados.</li>
+</ol>
+<div id="fig-ch1-metodo-cientifico" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ch1-metodo-cientifico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/metodo-cientifico.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ch1-metodo-cientifico-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Etapas do método científico.
+</figcaption>
+</figure>
+</div>
+<p>A investigação científica tem início com a observação objetiva e rigorosa de um fenômeno ou conjunto de fatos, seguida pela formulação de uma <strong>pergunta científica</strong> específica. Com base em conhecimentos prévios, é proposta uma hipótese, isto é, uma conjectura que fornce uma possível resposta ou explicação para a questão levantada.</p>
+<p>Para que uma hipótese seja considerada científica, precisa ser <em>testável</em> e <em>refutável</em>, de modo a permitir experimentação ou análise empírica que confirme ou rejeite sua validade. Hipóteses que não atendem a esses critérios não podem ser avaliadas de uma perspectiva científica.</p>
+<p>A etapa de experimentação compreende a coleta e análise rigorosa de dados. Com base nas evidências obtidas, avalia-se se a hipótese formulada oferece uma explicação válida para o fenômeno estudado. Caso contrário, a hipótese é revisada, aprimorada ou substituída, reiniciando, assim, o ciclo investigativo.</p>
+<p>A comunicação dos resultados é fundamental para garantir que o conhecimento adquirido seja traduzido para aplicações concretas. A revisão por pares assegura a qualidade e validade da pesquisa, ao passo que a replicação dos experimentos por outros pesquisadores reforça a confiabilidade das conclusões e a reprodutibilidade dos achados científicos.</p>
+<p>O método científico se apoia em dois tipos principais de raciocínio lógico: <em>dedutivo</em> e <em>indutivo</em>.</p>
+<p>O <strong>raciocínio dedutivo</strong> parte de premissas gerais e teorias já estabelecidas para prever resultados específicos. Por exemplo, se é verdade que “todos os metais conduzem eletricidade” e “o cobre é um metal”, conclui-se que “o cobre conduz eletricidade”. Esta conclusão é uma <strong>dedução</strong> resultante das premissas consideradas verdadeiras. Estamos realizando uma previsão para a natureza de um metal específico (o cobre) com base no conhecimento que temos sobre todos os metais (declarado nas premissas). No método científico, o racicínio dedutivo é usado para testar hipóteses, por meio da previsão de extraídas de teorias consolidadas.</p>
+<p>O <strong>raciocínio indutivo</strong>, por sua vez, segue o caminho inverso: parte de um conjunto de observações específicas para identificar padrões e formular hipóteses ou generalizações. Por exemplo, se diversos experimentos mostram que determinados compostos químicos reagem sob certas condições, pode-se concluir que tais reações ocorrem de forma sistematica. Essa conclusão corresponde a uma <strong>inferência</strong> obtida a partir das evidências empíricas. É preciso notar, porém, que não se pode ter certeza absoluta na indução. Mesmo que todas as observações até o momento sustentem a conclusão obtida, novas evidências podem vir a refutá-la. Assim, conclusões obtidas a partir de indução dependem da qualidade e completude dos dados disponíveis e permanecem sujeitas à revisão à luz de novas evidências.</p>
+<p>No método científico, esses dois tipos de raciocínio se complementam. O raciocínio dedutivo permite testar previsões derivadas de conhecimentos e teorias existentes, enquanto o raciocínio indutivo contribui para a formulação de novas hipóteses a partir de observações empíricas. Se as evidências suportam a hipótese formulada, reforçam a teoria pressuposta; caso contrário, a teoria precisa ser revisada ou reformulada.</p>
+<p>As práticas da Ciência e da Engenharia normalmente envolvem o uso de dados experimentais para compreender fenômenos e validar teorias. Nesse sentido, a Estatística, desempenha um papel fundamental, ao promover rigor, objetividade e eficiência na coleta, análise e interpretação dos dados.</p>
+</section>
+<section id="o-que-é-estatística" class="level2">
+<h2 class="anchored" data-anchor-id="o-que-é-estatística">O que é Estatística?</h2>
+<blockquote class="blockquote">
+<p>A <strong>Estatística</strong> é a ciência responsável por estruturar o planejamento de estudos e experimentos, coletar e analisar dados, além de interpretar e apresentar os resultados obtidos. Seu objetivo principal é fornecer ferramentas que auxiliem o processo de tomada de decisão e de descoberta científica, sobretudo em situações que envolvam incerteza e variabilidade.</p>
+</blockquote>
+<p>A análise estatística transforma dados brutos em informações úteis, permitindo identificar padrões, tendências e associações. Essa abordagem é amplamente aplicada em diversas áreas do conhecimento que lidam com desafio de coletar, processar e interpretar de volumes cada vez maiores e mais complexos de dados, sejam eles apresentados na forma de números, textos, imagens, áudio, vídeo, documentos ou outras formas de registro.</p>
+</section>
+<section id="elementos-fundamentais-em-estatística" class="level2">
+<h2 class="anchored" data-anchor-id="elementos-fundamentais-em-estatística">Elementos Fundamentais em Estatística</h2>
+<p>Um <strong>conjunto de dados</strong> ou <strong>massa de dados</strong> consiste em uma coleção de valores observados que representam uma ou mais características de objetos, indivíduos ou unidades. Um conjunto de dados pode se referir a uma população completa ou uma amostra dela extraída.</p>
+<p>Na terminologia estatística, o conjunto de dados que desejamos analisar representa uma <strong>população</strong> se corresponde à totalidade das entidades de interesse. A população pode ser finita ou infinita, real ou conceitual.</p>
+<p>Uma <strong>população finita</strong> é composta por um número limitado e enumerável de elementos, ou seja, é possível determinar a quantidade exata de indivíduos que a compõe. Por exemplo, suponha que um engenheiro deseja analisar a qualidade dos componentes eletrônicos de um determinado lote contendo 1000 unidades. Neste caso, a população de interesse é finita e corresponde aos 1000 itens que compõe o lote em questão. Similarmente, se uma companhia aérea deseja planejar a manutenção das 50 aeronaves que possui em sua frota, a população de interesse também é finita e corresponde exatamente a essas 50 aeronaves.</p>
+<p>Por outro lado, não é possível enumerar todos os elementos de uma <strong>população infinita</strong>. Veículos transitando em uma rodovia movimentada ou o conjunto de todos os detritos espaciais na órbita terrestre constituem exemplos de populações que podem ser consideradas infinitas.</p>
+<p>Se os elementos da população existem de forma tangível ou concreta, dizemos que esta é uma <strong>população real</strong>. Por exemplo, o conjunto de todos os passageiros que estão a bordo de uma aeronave comercial neste exato momento constitui uma população real. Por outro lado, uma <strong>população conceitual</strong> é composta por elementos hipotéticos, inexistentes de forma concreta, mas considerados para fins de planejamento ou modelagem, como as diversas configurações possíveis de um determinado veículo espacial, ou os diferentes cenários futuros imaginados para incidentes aeronáuticos envolvendo veículos autônomos.</p>
+<p>Quando se obtém informação sobre todos os elementos da população, tem-se um <strong>censo</strong>. Porém, devido a limitações de custo, tempo ou outros recursos escassos, nem sempre é viável investigar toda a população. Nestes casos, convém selecionar uma <strong>amostra</strong>, que corresponde a um subconjunto extraído da população de interesse, com o objetivo de realizar inferências sobre ela.</p>
+<p>Para que as conclusões obtidas a partir de uma amostra sejam confiáveis, essa amostra deve ser representativa, preservando as características fundamentais da população de onde foi retirada. Isto requer uma seleção criteriosa dos elementos que a compõe.</p>
+<p>A seleção aleatória (<strong>aleatorização</strong>) é uma estratégia que busca evitar introdução de distorções. A forma mais básica de aleatorização é a <strong>amostragem aleatória simples</strong>, em que cada indivíduo na população tem a mesma chance de ser selecionado para compor a amostra e não existe relação intencional entre os elementos selecionados.</p>
+<p>É importante lembrar que qualquer inferência baseada em dados amostrais está sujeita a incertezas, pois a amostra não é capaz de reproduzir perfeitamente todas as características da população, por mais representativa que seja.</p>
+<p>As <strong>unidades experimentais</strong> (também chamadas <strong>unidades amostrais</strong>) são os elementos, objetos ou indivíduos que compõe a amostra. As <strong>variáveis</strong> são as características de interesse registradas para cada unidade. Em um estudo de motores a combustão, por exemplo, podem-se medir variáveis como emissão de gases, consumo de combustível e eficiência para diversas unidades. As informações coletadas para cada unidade formam uma <strong>observação</strong>, que agrega toda a infromação disponível para aquela unidade. Assim, a observação referente ao i-ésimo motor avaliado consiste no conjunto de valores medidos para este motor para cada uma das variáveis.</p>
+<p>As variáveis podem ser classificadas segundo o tipo de informação que expressam. <strong>Variáveis categóricas</strong> (<strong>qualitativas</strong>) podem ser separadas em categorias ou classes. Se não há qualquer ordenamento entre as classes, temos uma variável categórica <strong>nominal</strong> (por exemplo, a marca de um veículo ou a cor dos olhos de uma pessoa). Se as categorias possuem uma ordem implícita, temos uma variável categórica <strong>ordinal</strong> (como nível de escolaridade: fundamental, médio, superior). <strong>Variáveis numéricas</strong> (<strong>quantitativas</strong>) são medidas em escalas numérica com intervalos iguais, podendo ser <strong>discretas</strong> ou <strong>contínuas</strong>. Uma variável numérica é <strong>discreta</strong> se assumir uma quantidade finita ou infinita e enumerável de valores distintos (como o número de transações financeiras realizadas no canal digital de um banco em um dia); e é <strong>contínua</strong> se puder assumir um número infinito não enumerável de valores (como o valor monetário de uma transação financeira, ou o tempo de reação de um motorista). É importante identificar tipo de variável, pois os procedimentos estatísticos adequados para análise dependem da natureza dos dados.</p>
+<p>Um conjunto de variáveis pode representar as características de uma população ou de uma amostra. Assim, é necessário estabelecer a relação entre as quantidades de interesse da população e os valores observados na amostra, distinguindo entre <strong>parâmetros</strong> e <strong>estatísticas</strong>. <strong>Parâmetros</strong> são quantidades populacionais, geralmente desconhecidas. <strong>Estatísticas</strong> são valores calculados com base em uma amostra e usados para estimar os parâmetros populacionais correspondentes. Como a amostra varia conforme a seleção de indivíduos que a compõe, os valores das estatísticas também variam, representando as quantidades populacionais correspondentes de forma aproximada.</p>
+</section>
+<section id="fontes-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="fontes-de-dados">Fontes de Dados</h2>
+<p>Os dados podem ser provenientes de <strong>fontes primárias</strong> (quando sua coleta faz parte da investigação científica) ou de <strong>fontes secundárias</strong> (quando são extraídos de outras fontes, incluindo relatórios, publicações ou bancos de dados). E geral, a coleta primária pode ocorrer por meio de experimentos planejados e estudos observacionais.</p>
+<p>Em um <strong>estudo experimental</strong>, o investigador manipula ativamente uma ou mais variáveis (<strong>fatores</strong> ou <strong>variáveis explicativas</strong>) em um ambiente controlado, buscando isolar seu efeito sobre a variável de resposta de todas as outras possíveis fontes de variabilidade que podem afetar a resposta de interesse. Assim, qualquer efeito observado na resposta pode ter causa atribuída à variação dos fatores controlados, permitindo estabelecer relações de causa e efeito. Por exemplo, é possível conduzir um experimento para avaliar se a inclusão de um certo aditivo influencia a resistência de um material. Se o experimento for realizado de forma controlada, eliminando perturbações espúrias, as variações observadas na resistência do material poderão ser atribuídas à presença do aditivo.</p>
+<p>Em um <strong>estudo observacional</strong>, por outro lado, o pesquisador atua apenas como um observador, no fenômeno ou nas variáveis em estudo. Nesse caso, é mais difícil estabelecer relações de causa e efeito, devido à possível presença de <em>variáveis de confusão</em>, que afetam simultaneamente a variável de resposta e as variáveis explicativas, mas não estão sob controle.</p>
+<p>Como exemplo, considere um estudo observacional conduzido por uma empresa de transporte aéreo com o objetivo de explicar o consumo de combustível por unidade de carga transportada em suas aeronaves, em função do tipo de aeronave, do fator de carga e da rota percorrida. Variáveis de confusão como condições climáticas, congestionamento do tráfego aéreo e outros fatores específicos relacionados aos aeroportos, podem influenciar tanto o consumo de combustível quanto as variáveis explicativas. Condições climáticas, tais como velocidade e direção do vento ou turbulência, podem afetar o consumo de combustível da aeronave, assim como o congestionamento do tráfego aéreo, que pode levar a mudanças de rota ou aumento no tempo de taxiamento. Se tais fatores não forem considerados, o estudo pode levar a conclusões equivocadas sobre o efeito do tipo de aeronave, do fator de carga e da rota percorrida no consumo de combustível.</p>
+</section>
+<section id="tipos-de-problemas-de-análise-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="tipos-de-problemas-de-análise-de-dados">Tipos de Problemas de Análise de Dados</h2>
+<p>A Estatística lida com duas classes de problemas: descritivos e inferenciais.</p>
+<p>Em problemas <em>descritivos</em>, o principal objetivo é organizar, resumir e descrever as principais características de um conjunto de dados, seja ele uma amostra ou uma população. Para isso, utilizam-se técnicas de visualização e resumos estatísticos, que facilitem a compreensão dos dados. No entanto, é importante ressaltar que as conclusões obtidas a partir deste tipo de análise referem-se exclusivamente ao conjunto de dados analisado e não podem ser extrapoladas para além dele.</p>
+<p>Já em problemas <em>inferenciais</em>, busca-se generalizar as conclusões obtidas em uma amostra para toda a população. Neste caso, o propósito é realizar generalizações que sejam válidas para além dos dados observados, seja estimando parâmetros ou tesntando hipóteses sob condições de incerteza. Como cada amostra representa apenas parte da população, as inferências são inevitavelmente incertas, sendo fundamental quantificar esse grau de incerteza.</p>
+<p>Por exemplo, suponha que um engenheiro, ao avaliar um conjunto de 100 dispositivos defeituosos, observe que 7% das falhas foram causadas por exposição à radiação. Ele poderia tentar inferir se esse índice é válido para toda a linha de produção, isto é, ele pode afirmar que esta proporção reflete exatamente a realidade para todos os dispositivos deste tipo? Certamente não. Uma outra amostra de 100 dispositivos poderia apresentar 8% de falhas causadas por radiação, enquanto uma terceira poderia indicar em 4%. Avaliar e quantificar essa incerteza faz parte do processo de inferência, e é possível com o emprego de métodos probabilísticos.</p>
+</section>
+<section id="probabilidade-inferência-e-dedução" class="level2">
+<h2 class="anchored" data-anchor-id="probabilidade-inferência-e-dedução">Probabilidade, Inferência e Dedução</h2>
+<p>O método científico, ao empregar experimentos para obter dados, encontra na Teoria de Probabilidades a base para lidar com a incertezas associadas. Em linguagem estatística, cada população é descrita por um modelo probabilístico, determinado por um conjunto de parâmetros fixos, mas desconhecidos. As estatísticas obtidas a partir de amostras variam de acordo com o processo de amostragem e, por meio de inferências, são utilizadas para extrair conclusões sobre a distribuição populacional.</p>
+<p>Como mostramos, a incerteza é inerente a todo processo de amostragem. A Teoria de Probabilidades permite descrever essa incerteza de forma quantitativa, fornecendo ferramentas para avaliar o quanto podemos confiar nas conclusões obtidas a partir de amostras finitas ou imperfeitas.</p>
+<p>A <a href="#fig-ch1-probabilidade-estatistica" class="quarto-xref">Figura&nbsp;2</a>, abaixo, ilustra o papel do raciocínio dedutivo na construção de modelos probabilísticos e do raciocínio indutivo na inferência estatística, evidenciando a troca de informações entre população e amostra.</p>
+<div id="fig-ch1-probabilidade-estatistica" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ch1-probabilidade-estatistica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/probabilidade-estatistica.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ch1-probabilidade-estatistica-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Relação entre população e amostra, evidenciando o processos dedutivo (modelagem probabilística) e indutivo (inferência estatística).
+</figcaption>
+</figure>
+</div>
+<p>Dominar conceitos de Probabilidade e Estatística permitirá compreender melhor as limitações dos modelos, interpretar resultados de modo crítico e comunicar descobertas de maneira clara e fundamentada.</p>
+<p>Independentemente de se tratar de um problema descritivo ou inferencial, um passo inicial essencial envolve organizar e resumir os dados. Técnicas de análise exploratória podem trazer à tona padrões, tendências e destacar aspectos relevantes do problema, servindo de base para interpretações consistentes e para a comunicação dos resultados de forma efetiva.</p>
+</section>
+<section id="métodos-para-exploração-resumo-e-descrição-de-dados" class="level2">
+<h2 class="anchored" data-anchor-id="métodos-para-exploração-resumo-e-descrição-de-dados">Métodos para Exploração, Resumo e Descrição de Dados</h2>
+<p>A Análise Exploratória de Dados (EDA, do inglês <em>Exploratory Data Analysis</em>) tem como principal objetivo proporcionar uma melhor compreensão dos dados disponíveis. Esse processo envolve a investigação de diversos aspectos do conjunto de dados, incluindo:</p>
+<ul>
+<li><p>identificar as variáveis presentes, o número de observações, o formato dos dados e outras características relevantes da massa de dados;</p></li>
+<li><p>examinar a dispersão, a forma e possíveis padrões na distribuição dos dados;<br>
+</p></li>
+<li><p>verificar a existência de possíveis associações ou padrões de dependência entre diferentes variáveis.</p></li>
+</ul>
+<p>Esta análise exploratória deve ser conduzida com três propósitos fundamentais:</p>
+<ol type="1">
+<li><p>Diagnóstico dos dados: identificar possíveis problemas, como medidas inconsistentes, diferenças de escala ou ordens de grandeza incompatíveis, amplitude inadequada de valores, dados faltantes ou erros de registro.</p></li>
+<li><p>Avaliação da viabilidade da investigação: verificar se os dados disponíveis são adequados e suficientes para responder à questão científica sendo investigada ou se há necessidade de obter informações adicionais. Nessa etapa deve considerar também a possibilidade de explorar outras questões a partir da base de dados existente.</p></li>
+<li><p>Obtenção de insights preliminares: identificar padrões e tendências iniciais nos dados, possibilitando a formulação de hipóteses que serão testadas posteriormente com métodos inferenciais.</p></li>
+</ol>
+<p>Se o conjunto de dados representa uma população, as ferramentas exploratórias são úteis para descrever e resumir suas principais características. No entanto, na maioria das vezes os dados correspondem a uma amostra, de forma que a exploração pode servir para orientar o processo de inferência estatística, auxiliando na formulação de hipóteses e na identificação de padrões iniciais.</p>
+<p>É importante destacar que a exploração dos dados não deve ser utilizada para realizar inferências ou previsões. Como esse processo não conta com a formalidade e o rigor estatístico necessários, suas conclusões devem ser tratadas como indicativas, e não como afirmações científicas conclusivas.</p>
+<p>Neste texto, consideraremos apenas <em>dados estruturados</em>, ou seja, aqueles que podem ser organizados tabelas. No entanto, mesmo quando os dados são tabulados, extrair informações relevantes pode ser uma tarefa desafiadora, especialmente à medida que o volume de obervações aumenta. Esse ponto será ilustrado no exemplo a seguir.</p>
+<div id="exm-auto-mpg-EDA" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 1 (Consumo de combustível de automóveis)</strong></span> Utilizaremos o conjunto de dados <code>AutoMPG</code> para ilustrar a aplicação de aguns métodos para exploração, resumo e descrição de dados. Os dados foram exxtraídos do <a href="https://archive.ics.uci.edu/ml/datasets/auto+mpg">UCI Machine Learning Repository</a>, um repositório que disponibiliza uma grande variedade de conjuntos de dados para diversos tipos de análise.</p>
+<p>O objetivo original do estudo era prever o consumo de combustível de automóveis em ambiente urbano expresso em milhas por galão (mpg), com base em determinadas características dos veículos.</p>
+<p><strong>Informações Preliminares</strong></p>
+<p>O conjunto de dados contém um total de 398 observações registradas para 9 variáveis de interesse, incluindo a resposta <code>mpg</code>:</p>
+<p><em>Variáveis:</em></p>
+<p><code>mpg</code>: numérica (contínua)<br>
+<code>cylinder</code>: categórica (ordinal)<br>
+<code>displacement</code>: numérica (contínua)<br>
+<code>hp</code>: numérica (contínua)<br>
+<code>weight</code>: numérica (contínua)<br>
+<code>acceleration</code>: numérica (contínua)<br>
+<code>modelyear</code>: numérica (discreta)<br>
+<code>origin</code>: categórica (nominal)<br>
+<code>carname</code>: categórica (nominal)</p>
+<p>Entre essas variáveis, algumas são categóricas e outras, numéricas. Algumas observações foram removidas do conjunto original por ausência de registro na variável de resposta <code>mpg</code>. Além disso, verificou-se que há 6 valores faltantes para a potência do motor, indicada pela variável <code>hp</code>. Após excluir as observações incompletas, o conjunto final contém um total de 392 observações completas.</p>
+<p>A tabela abaixo apresenta as 25 primeiras observações do conjunto de dados:</p>
+<div class="cell" data-tbl-cap-location="top">
+<div id="tbl-auto-data" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-cap-location="top">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-auto-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabela&nbsp;1: Dados de consumo de automóveis (primeiras 25 observações)
+</figcaption>
+<div aria-describedby="tbl-auto-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 4%">
+<col style="width: 9%">
+<col style="width: 13%">
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 13%">
+<col style="width: 10%">
+<col style="width: 7%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">mpg</th>
+<th style="text-align: left;">cylinder</th>
+<th style="text-align: right;">displacement</th>
+<th style="text-align: right;">hp</th>
+<th style="text-align: right;">weight</th>
+<th style="text-align: right;">acceleration</th>
+<th style="text-align: right;">modelyear</th>
+<th style="text-align: left;">origin</th>
+<th style="text-align: left;">carname</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">307</td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">3504</td>
+<td style="text-align: right;">12.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">chevrolet chevelle malibu</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">350</td>
+<td style="text-align: right;">165</td>
+<td style="text-align: right;">3693</td>
+<td style="text-align: right;">11.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">buick skylark 320</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">318</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">3436</td>
+<td style="text-align: right;">11.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">plymouth satellite</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">304</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">3433</td>
+<td style="text-align: right;">12.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">amc rebel sst</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">302</td>
+<td style="text-align: right;">140</td>
+<td style="text-align: right;">3449</td>
+<td style="text-align: right;">10.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">ford torino</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">429</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">4341</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">ford galaxie 500</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">454</td>
+<td style="text-align: right;">220</td>
+<td style="text-align: right;">4354</td>
+<td style="text-align: right;">9.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">chevrolet impala</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">440</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: right;">4312</td>
+<td style="text-align: right;">8.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">plymouth fury iii</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">455</td>
+<td style="text-align: right;">225</td>
+<td style="text-align: right;">4425</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">pontiac catalina</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">390</td>
+<td style="text-align: right;">190</td>
+<td style="text-align: right;">3850</td>
+<td style="text-align: right;">8.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">amc ambassador dpl</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">383</td>
+<td style="text-align: right;">170</td>
+<td style="text-align: right;">3563</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">dodge challenger se</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">340</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">3609</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">plymouth ’cuda 340</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">15</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">3761</td>
+<td style="text-align: right;">9.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">chevrolet monte carlo</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">14</td>
+<td style="text-align: left;">8</td>
+<td style="text-align: right;">455</td>
+<td style="text-align: right;">225</td>
+<td style="text-align: right;">3086</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">buick estate wagon (sw)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">2372</td>
+<td style="text-align: right;">15.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">toyota corona mark ii</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">22</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">2833</td>
+<td style="text-align: right;">15.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">plymouth duster</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">18</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">199</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">2774</td>
+<td style="text-align: right;">15.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">amc hornet</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">2587</td>
+<td style="text-align: right;">16.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">ford maverick</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">27</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">2130</td>
+<td style="text-align: right;">14.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">datsun pl510</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">26</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">46</td>
+<td style="text-align: right;">1835</td>
+<td style="text-align: right;">20.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">volkswagen 1131 deluxe sedan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">87</td>
+<td style="text-align: right;">2672</td>
+<td style="text-align: right;">17.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">peugeot 504</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">24</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">2430</td>
+<td style="text-align: right;">14.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">audi 100 ls</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">104</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">2375</td>
+<td style="text-align: right;">17.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">saab 99e</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">26</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: right;">121</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">2234</td>
+<td style="text-align: right;">12.5</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">bmw 2002</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">6</td>
+<td style="text-align: right;">199</td>
+<td style="text-align: right;">90</td>
+<td style="text-align: right;">2648</td>
+<td style="text-align: right;">15.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">amc gremlin</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Embora esse conjunto de dados contenha uma quantidade considerável de informações, sua interpretação pode ser difícil quando analisado em sua forma bruta, mesmo considerando as 25 primeiras observações da tabela, que reprentem apenas uma pequena amostra do total disponível. Para facilitar a extração de informações relevantes, é essencial resumir e visualizar certos aspectos dos dados, o que permite responder a perguntas como:</p>
+<ul>
+<li>Qual a proporção dos automóveis produzidos em cada região de origem?</li>
+<li>Como está distribuído o número de cilindros entre os veículos?</li>
+<li>Existe relação entre o consumo de combustível (<code>mpg</code>) e a aceleração (<code>acceleration</code>)?</li>
+<li>Qual a associação entre a potência do motor (<code>hp</code>) e a aceleração (<code>acceleration</code>)?</li>
+</ul>
+<p>A seguir, exploraremos algumas ferramentas de análise exploratória de dados que tornarão possível obter insights preliminares e direcionar investigações mais profundas que permitam responder a essas perguntas de maneira mais rigorosa.</p>
+</div>
+</section>
+<section id="resumos-exploratórios" class="level2">
+<h2 class="anchored" data-anchor-id="resumos-exploratórios">Resumos Exploratórios</h2>
+<p>Para obter uma melhor compreensão dos dados disponíveis e orientar as análises subsequentes, podemos construir resumos exploratórios numéricos ou gráficos. A escolha dos procedimentos mais adequados depende da natureza das variáveis analisadas, ou seja, se são categóricas ou numéricas.</p>
+<p><strong>Resumos numéricos</strong> correspondem a estatísticas calculadas a partir do conjunto de dados e fornecem informações quantitativas sobre suas principais características. <strong>Resumos gráficos</strong> permitem visualizar padrões e tendências de maneira intuitiva, podendo tornar mais evidente a estrutura dos dados.</p>
+<section id="resumos-unidimensionais" class="level3">
+<h3 class="anchored" data-anchor-id="resumos-unidimensionais">Resumos Unidimensionais</h3>
+<p>Resumos unidimensionais consideram cada variável separadamente. Eles são úteis para compreender a estrutura dos dados, permitindo detectar padrões, identificar valores extremos e vislumbrar a distribuição das variáveis.</p>
+<p>Algumas das ferramentas gráficas mais utilizadas para obter informação a respeito da distribuição de variáveis incluem <em>histogramas</em>, <em>gráficos de densidade estimada</em> ou <em>boxplots</em>, no caso de variáveis quantitativas e <em>tabelas de frequência</em> e <em>barplots</em>, no caso de variáveis qualitativas.</p>
+<p><strong>Variáveis Quantitativas</strong></p>
+<p>A distribuição dos valores observados para uma variável quantitativa pode ser representada por um <strong>histograma</strong>, gerado no R com o comando <code>geom_histogram()</code>. O histograma é útil para descrever uma distribuição, mas sua forma depende da discretização, determinada pelo número de divisões (<em>bins</em>) e da localização de suas fronteiras. Poucas caixas tornam o histograma pouco informativo; por outro lado, uma quantidade excessiva de caixas torna o histograma ruidoso, destacando variações irrelevantes.</p>
+<p>Uma alternativa ao histograma é a <strong>curva de densidade estimada</strong>, obtida no R com o comando <code>geom_density()</code>. Ela representa uma versão suavizada da distribuição, sendo contínua e pode produzir uma visualização mais eficaz do comportamento dos dados.</p>
+<p>A localização de cada observação pode ser adicionada ao histograma, criando um <strong>diagrama de dispersão unidimensional</strong>, com o comando <code>geom_rug()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(auto, <span class="fu">aes</span>(<span class="at">x =</span> acceleration)) <span class="sc">+</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">bins =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">lwd =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="dv">4</span>, <span class="at">fill =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">adjust =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"aceleração"</span>, <span class="at">y =</span> <span class="st">"densidade"</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(auto, <span class="fu">aes</span>(<span class="at">x =</span> acceleration)) <span class="sc">+</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">lwd =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="dv">4</span>, <span class="at">fill =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">adjust =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"aceleração"</span>, <span class="at">y =</span> <span class="st">"densidade"</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(auto, <span class="fu">aes</span>(<span class="at">x =</span> acceleration)) <span class="sc">+</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">lwd =</span> <span class="fl">0.5</span>, <span class="at">colour =</span> <span class="dv">4</span>, <span class="at">fill =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>, <span class="at">adjust =</span> <span class="fl">2.5</span>) <span class="sc">+</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"aceleração"</span>, <span class="at">y =</span> <span class="st">"densidade"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fig-auto-hist-acceleration" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-auto-hist-acceleration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
+<div id="fig-auto-hist-acceleration-1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-auto-hist-acceleration-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="MB751_AULA01_files/figure-html/fig-auto-hist-acceleration-1.png" class="img-fluid figure-img" data-ref-parent="fig-auto-hist-acceleration" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-auto-hist-acceleration-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) bins = 5
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="fig-auto-hist-acceleration-2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-auto-hist-acceleration-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="MB751_AULA01_files/figure-html/fig-auto-hist-acceleration-2.png" class="img-fluid figure-img" data-ref-parent="fig-auto-hist-acceleration" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-auto-hist-acceleration-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) bins = 15
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div id="fig-auto-hist-acceleration-3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-auto-hist-acceleration-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="MB751_AULA01_files/figure-html/fig-auto-hist-acceleration-3.png" class="img-fluid figure-img" data-ref-parent="fig-auto-hist-acceleration" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-auto-hist-acceleration-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(c) bins = 50
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-auto-hist-acceleration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Histogramas da variável <code>acceleration</code> para diferentes números de caixas.
+</figcaption>
+</figure>
+</div>
+</div>
+<p><strong>Variáveis Qualitativas</strong></p>
+<p>Para variáveis categóricas, o <strong>barplot</strong> é uma ferramenta gráficas útil para visualizar a distribuição das frequências entre as diferentes classes que uma variável categórica pode assumir. Ela é especialmente útil no caso de mais de duas classes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Barplot para `cylinder`</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>auto <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(cylinder) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> cylinder, <span class="at">y =</span> n, <span class="at">fill =</span> cylinder)) <span class="sc">+</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Número de cilindros"</span>, <span class="at">y =</span> <span class="st">"Frequência"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-auto-barplot-cylinder" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-auto-barplot-cylinder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="MB751_AULA01_files/figure-html/fig-auto-barplot-cylinder-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-auto-barplot-cylinder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Número de ocorrências em cada classe da variável <code>cylinder</code>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Observamos que há um desbalanceamento na distribuição do número de cilindros entre os veículos. Dependendo do uso que se fará dos dados, pode ser necessário considerar estratégias para equilibrar o número de observações por categoria.</p>
+<p>Embora <strong>gráficos de setores</strong> (também conhecidos como <strong>gráficos de pizza</strong>) sejam extremamente populares, não é recomendável utilizá-los para representar frequências de variáveis categóricas. A comparação de áreas em um gráfico de setores é menos intuitiva do que a comparação de alturas em um <em>barplot</em>, especialmente quando há um grande número as categorias, quando suas proporções são semelhantes, ou quando ocorrem em frequências muito baixas.</p>
+<section id="medidas-de-localização-ou-tendência-central" class="level4">
+<h4 class="anchored" data-anchor-id="medidas-de-localização-ou-tendência-central">Medidas de Localização ou Tendência Central</h4>
+<p>As medidas de tendência central servem para identificar um valor que represente de maneira resumida o conjunto de dados, permitindo localizar onde os valores de uma variável quantitativa costumam se concentrar. As três principais medidas de tendência central são <strong>média</strong>, <strong>mediana</strong> e <strong>moda</strong>.</p>
+<ol type="a">
+<li>Média (<span class="math inline">\(\bar{X}\)</span> ou <span class="math inline">\(\mu\)</span>)</li>
+</ol>
+<p>A média aritmética, ou simplesmente média, representa o centro de massa ou ponto de equilíbrio da distribuição. Esta é a medida de localização mais frequentemente utilizada, mas é muito sensível a assimetrias na distribuição e pode ser bastante influenciada por valores extremos. Tipicamente, o símbolo <span class="math inline">\(\bar{X}\)</span> é utilizado para representar a média amostral de um conjunto de valores <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span>, enquanto a média populacional é representada pela letra grega <span class="math inline">\(\mu\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+  \bar{X} = \frac{1}{n}\sum_{i=1}^{n}X_i
+\end{align*}\]</span></p>
+<ol start="2" type="a">
+<li>Mediana (<span class="math inline">\(m\)</span> ou <span class="math inline">\(\tau\)</span>)</li>
+</ol>
+<p>A mediana de um conjunto de valores ordenados em ordem crescente <span class="math inline">\(X_{(1)}, X_{(2)}, \ldots, X_{(n)}\)</span> é o valor que divide os valores observados em duas metades, ou seja, 50% das observações apresentam valor inferior à mediana e 50% das observações apresentam valor superior à mediana. Essa é uma medida de centro resistente a assimetrias e valores extremos, pois cada observação apresenta o mesmo peso na determinação da mediana. Por este motivo, esta é uma estatística chamada robusta. A mediana amostral é representada por <span class="math inline">\(m\)</span> e a mediana populacional é representada pela letra grega <span class="math inline">\(\tau\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+m = \left\{
+\begin{array}{ll}
+  X_{[(n+1)/2]} &amp; \mbox{se $n$ é ímpar};\\
+  \frac{1}{2}\left[X_{(n/2)} + X_{(n/2 + 1)} \right] &amp; \mbox{se $n$ é par}.
+\end{array} \right.
+\end{align*}\]</span></p>
+<ol start="3" type="a">
+<li>Moda</li>
+</ol>
+<p>A moda é uma medida bem menos utilizada que as outras duas e representa o valor mais frequente no conjunto de dados. Ela pode ser útil em situações em que a frequência relativa de ocorrências é importante.</p>
+<p>A <a href="#fig-medidas-localizacao" class="quarto-xref">Figura&nbsp;5</a> ilustra distribuições de diferentes formatos, indicando as medidas de localização em cada caso. Veja que a média deriva na direção da cauda, para as distribuições assimétricas. Para uma distribuição com cauda longa à direita, a média apresenta valor maior que a mediana (os valores observados elevados, embora pouco frequentes, aumentam o valor da média amostral); por outro lado, para uma distribuição com cauda longa à esquerda, a média apresenta valor menor que a mediana. Para distribuições com assimetria acentuada, a mediana pode fornecer uma representação mais adequada para o “centro” da distribuição. Em todo caso, a medida de localização adequada para um certo conjunto de dados depende exatamente do tipo de informação descritiva que se deseja obter.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-medidas-localizacao" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-medidas-localizacao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="MB751_AULA01_files/figure-html/fig-medidas-localizacao-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-medidas-localizacao-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Medidas de centro ou localização para distribuições com diferentes formatos.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>No exemplo do consumo de combustível, a distribuição da variável <code>acceleration</code> é aproximadamente simétrica e unimodal (ou seja, apresenta apenas uma moda, ou pico). Por este motivo, os valores de média, mediana e moda são bem próximos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>acceleration <span class="ot">&lt;-</span> <span class="fu">c</span>(auto<span class="sc">$</span>acceleration)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>density_estimate <span class="ot">&lt;-</span> <span class="fu">density</span>(auto<span class="sc">$</span>acceleration)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>mean_value   <span class="ot">&lt;-</span> <span class="fu">mean</span>(acceleration)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>median_value <span class="ot">&lt;-</span> <span class="fu">median</span>(acceleration)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>mode_value   <span class="ot">&lt;-</span> density_estimate<span class="sc">$</span>x[<span class="fu">which.max</span>(density_estimate<span class="sc">$</span>y)]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(auto, <span class="fu">aes</span>(<span class="at">x =</span> acceleration)) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">bins =</span> <span class="dv">15</span>) <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># adiciona linha de densidade estimada (suavização)</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">lwd =</span> <span class="fl">0.5</span>, <span class="at">fill =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># adiciona dispersão unidimensional de `acceleration`</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># adiciona "média"</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(acceleration), <span class="at">color =</span> <span class="st">"média"</span>),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>             <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">show.legend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># adiciona "mediana"</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(acceleration), <span class="at">color =</span> <span class="st">"mediana"</span>),</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>             <span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">show.legend =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="co"># adiciona "moda"</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span>  mode_value, <span class="at">color =</span> <span class="st">"moda"</span>), </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>             <span class="at">lwd =</span> <span class="dv">1</span>, <span class="at">show.legend =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-medidas-localizacao-acceleration" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-medidas-localizacao-acceleration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="MB751_AULA01_files/figure-html/fig-medidas-localizacao-acceleration-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-medidas-localizacao-acceleration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Medidas de centro ou localização para variável <code>acceleration</code>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="medidas-de-dispersão-variabilidade" class="level4">
+<h4 class="anchored" data-anchor-id="medidas-de-dispersão-variabilidade">Medidas de Dispersão (Variabilidade)</h4>
+<p>As medidas de dispersão fornecem informação sobre o espalhamento dos valores em um conjunto de dados, permitindo avaliar quão próximos ou afastados os valores estão do centro da distribuição. Elas indicam a heterogeneidade das observações e permitem perceber se os dados apresentam alta variabilidade, ou espalhamento, ou se estão mais concentrados em torno de um valor central. As medidas de dispersão mais comumente utilizadas são variância, desvio-padrão e amplitude.</p>
+<ol type="a">
+<li>Variância (<span class="math inline">\(S^2\)</span> ou <span class="math inline">\(\sigma^2\)</span>)</li>
+</ol>
+<p>A variância corresponde à distância média quadrática das observações com relação à média. A variância amostral <span class="math inline">\(S^2\)</span> de um conjunto de valores <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span>, é definida como</p>
+<p><span class="math display">\[\begin{align*}
+  S^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X})^2
+\end{align*}\]</span></p>
+<p>A variância populacional para uma população finita de tamanho <span class="math inline">\(n\)</span>, <span class="math inline">\(\sigma^2\)</span>, é definida como</p>
+<p><span class="math display">\[\begin{align*}
+  \sigma^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \mu)^2
+\end{align*}\]</span></p>
+<ol start="2" type="a">
+<li>Desvio-padrão (<span class="math inline">\(s\)</span> ou <span class="math inline">\(\sigma\)</span>)</li>
+</ol>
+<p>O desvio-padrão corresponde à raiz quadrada da variância e indica a dispersão média em torno da média. Para uma amostra, temos:</p>
+<p><span class="math display">\[\begin{align*}
+  s = \sqrt{S^2} = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X})^2}
+\end{align*}\]</span></p>
+<p>O desvio-padrão populacional é simplesmente <span class="math inline">\(\sigma = \sqrt{\sigma^2}\)</span>.</p>
+<ol start="3" type="a">
+<li>Amplitude (<span class="math inline">\(A\)</span>)</li>
+</ol>
+<p>A amplitude é a diferença entre o máximo e o mínimo valor observado para os dados. Esta é uma medida de dispersão robusta, pois diferentes conjuntos de dados podem apresentar diferentes comportamentos com relação à sua variabilidade, com uma mesma amplitude. Em geral, a amplitude é útil como medida de dispersão no caso de amostras pequenas, com poucas observações.</p>
+<p><span class="math display">\[\begin{align*}
+A = X_{max} - X_{min}
+\end{align*}\]</span></p>
+</section>
+<section id="medidas-de-posição-relativa" class="level4">
+<h4 class="anchored" data-anchor-id="medidas-de-posição-relativa">Medidas de Posição Relativa</h4>
+<p>As medidas de posição relativa descrevem onde uma determinada observação se situa em relação às demais quando os dados são ordenados em ordem crescente. Essas estatísticas são especialmente úteis para avaliar se um valor específico está abaixo ou acima de uma fração significativa da amostra, além de indicar quão longe um valor se encontra da média.</p>
+<ol type="a">
+<li>Quartis/percentis/quantis</li>
+</ol>
+<p>Os quartis são as posições que dividem a massa de dados em quartos. Sendo assim, 1/4 (ou 25%) das observações se encontram abaixo do 1o quartil (também chamado quartil inferior ou Q1) e 1/4 (ou 25%) das observações se encontram acima do 3o. quartil (o quartil superior, também chamado de Q3). A mediana corresponde ao 2o quartil (Q2) e a diferença entre o 3o e o 1o quartil é chamada amplitude interquartil (IQR, <em>interquartile range</em>). O primeiro quartil é também chamado de percentil 25% ou quantil 0,25.</p>
+<div id="fig-medidas-posicao-relativa" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-medidas-posicao-relativa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MB751_AULA01_files/figure-html/medidas-posicao-relativa-1.png" class="img-fluid figure-img" width="384"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-medidas-posicao-relativa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Medidas de posição relativa.
+</figcaption>
+</figure>
+</div>
+<ol start="2" type="a">
+<li>Escores-z</li>
+</ol>
+<p>Os escores-z medem a posição das observações com relação a média, em números de desvios-padrão. Valores negativos para o escore-z indicam que a observação correspondente encontra-se abaixo da média. Valores positivos, indicam que a observação se encontra acima da média. Quanto maior o valor do escore-z em módulo, mais distante da média se encontra a observação.</p>
+<p><span class="math display">\[\begin{align*}
+  z_i = \frac{X_i - \bar{X}}{S}
+\end{align*}\]</span></p>
+<p>Pela <em>Regra Empírica</em>, para distribuições simétricas e unimodais, a maior parte das observações em um conjunto de dados deve se encontrar a uma distância de dois desvios-padrão da média (isto é, os escores-z serão menores que 2, em valor absoluto) e quase a totalidade das observações deve estar a uma distância de 3 desvios-padrão da média (ou seja, terão escores-z inferiores a 3, em valor absoluto).</p>
+</section>
+<section id="observações-extremas-outliers" class="level4">
+<h4 class="anchored" data-anchor-id="observações-extremas-outliers">Observações Extremas (<em>Outliers</em>)</h4>
+<p>Por vezes, observações inconsistentes estão presentes da massa de dados. Essa inconsistência pode se manifestar através de um valor de observação atipicamente grande ou pequeno, relativamente às demais observações no conjunto de dados. Tais observações são chamadas <em>outliers</em>, pontos extremos ou observações extremas.</p>
+<p><em>Outliers</em> normalmente podem ter uma das possíveis causas:</p>
+<ol type="1">
+<li>A observação pode ter sido incorretamente medida ou registrada ;<br>
+</li>
+<li>A observação pode pertencer a uma população distinta; ou<br>
+</li>
+<li>A observação é correta, mas representa um evento raro.</li>
+</ol>
+<p>O método mais comum de detecção de <em>outliers</em> é o cálculo do escore-z. São considerados <em>outliers</em> observações com valores absolutos de escore-z maiores que 3. Outro procedimento é baseado na ferramenta gráfica chamada <em>boxplot</em>, que fornece um resumo da distribuição dos valores da variável sendo analisada.</p>
+<p>O boxplot nos dá 5 estatísticas robustas e também mostra possíveis <em>outliers</em>. A caixa é delimitada pelos quartis inferior (Q1) e superior (Q3) e a linha no seu centro corresponde à mediana (Q2). Portanto, 50% das observações se encontram entre os valores que determinam as extremidades da caixa. O comprimento da caixa corresponde à amplitude inter-quartis (ou IQR).</p>
+<p>As linhas horizontais que se afastam da caixa são chamadas “whiskers”, cujo comprimento é tal que a distância máxima entre as duas extremidades vale <span class="math inline">\(4 \times\)</span>IQR. Qualquer valor além dos “whiskers” é marcado como um ponto extremo, ou <em>outlier</em>.</p>
+<div id="fig-boxplot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/boxplot-outliers.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-boxplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Elementos de um boxplot.
+</figcaption>
+</figure>
+</div>
+<p>O código a seguir pode ser utilizado para produzir o boxplot para a variável <code>acceleration</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(auto, <span class="fu">aes</span>(<span class="at">x =</span> acceleration, <span class="at">y =</span> <span class="st">""</span>)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># adiciona boxplot</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span> () <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="co"># adiciona rótulo aos eixos  </span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">""</span>, <span class="at">x =</span> <span class="st">"acceleration"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-auto-boxplot-acceleration" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-auto-boxplot-acceleration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="MB751_AULA01_files/figure-html/fig-auto-boxplot-acceleration-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-auto-boxplot-acceleration-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: Boxplot de <code>acceleration</code>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Resumos numéricos unidimensionais podem ser obtidos no R utilizando a função <code>summary</code>. Para as variáveis categóricas, a função <code>summary</code> retorna o número de observações em cada classe. Para as variáveis quantitativas, a função <code>summary</code> fornece 6 números importantes: valores mínimo, máximo, 1o. e 3o. quartis, mediana e média. Veja o resumo numérico para as variáveis da massa de dados <code>auto</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># resumo numérico</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(auto)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      mpg        cylinder  displacement         hp            weight    
+ Min.   : 9.00   3:  4    Min.   : 68.0   Min.   : 46.0   Min.   :1613  
+ 1st Qu.:17.00   4:199    1st Qu.:105.0   1st Qu.: 75.0   1st Qu.:2225  
+ Median :22.75   5:  3    Median :151.0   Median : 93.5   Median :2804  
+ Mean   :23.45   6: 83    Mean   :194.4   Mean   :104.5   Mean   :2978  
+ 3rd Qu.:29.00   8:103    3rd Qu.:275.8   3rd Qu.:126.0   3rd Qu.:3615  
+ Max.   :46.60            Max.   :455.0   Max.   :230.0   Max.   :5140  
+  acceleration     modelyear     origin    carname         
+ Min.   : 8.00   Min.   :70.00   1:245   Length:392        
+ 1st Qu.:13.78   1st Qu.:73.00   2: 68   Class :character  
+ Median :15.50   Median :76.00   3: 79   Mode  :character  
+ Mean   :15.54   Mean   :75.98                             
+ 3rd Qu.:17.02   3rd Qu.:79.00                             
+ Max.   :24.80   Max.   :82.00                             </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="resumos-multidimensionais" class="level3">
+<h3 class="anchored" data-anchor-id="resumos-multidimensionais">Resumos Multidimensionais</h3>
+<p>Ferramentas gráficas podem ser especialmente úteis para comparar distribuições em diferentes grupos ou categorias. Por exemplo, podemos desejar comparar a aceleração de automóveis em função do número de cilindros (<code>cylinder</code>). É possível construir múltiplos boxplots, histogramas ou curvas de densidade estimada para cada categoria, a fim de comparar as distribuições condicionais de uma certa variável. A sobreposição das distribuições facilita a identificação visual de semelhanças e diferenças entre os grupos analisados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(auto, <span class="fu">aes</span>(<span class="at">x =</span> acceleration, <span class="at">y =</span> origin, <span class="at">fill =</span> origin)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"acceleration"</span>, <span class="at">y =</span> <span class="st">"origin"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MB751_AULA01_files/figure-html/auto-boxplot-origin-acceleration-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>No exemplo acima, podemos observar como as distribuições e as medianas da variável <code>acceleration</code> variam dependendo do local de origem do automóvel. Ainda que não seja possível afirmar de imediato a existência de diferença estatisticamente significativa entre os grupos, os padrões identificados podem motivar a formulação de hipóteses que serão testadas posteriormente, de maneira formal.</p>
+<p>Alternativamente, podemos comparar as curvas de densidade estimada de <code>acceleration</code> para cada grupo de origem, como abaixo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(auto, <span class="fu">aes</span>(<span class="at">x =</span> acceleration, <span class="at">fill =</span> origin)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>,  <span class="at">position =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"acceleration"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MB751_AULA01_files/figure-html/auto-density-origin-acceleration-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Nesse caso, um único gráfico exibe as distribuições de <code>acceleration</code> para automóveis de diferentes origens. A escolha da melhor ferramenta de visualização depende do contexto e do tipo de informação que se deseja destacar.</p>
+<p><strong>Relações entre Variáveis</strong></p>
+<p>Para avaliar a relação entre pares de variáveis quantitativas, é comum utilizar <strong>gráficos de dispersão</strong>. No exemplo abaixo, removemos a variável <code>carname</code>, por se tratar de um identificador textual, pouco informativo em termos de relações numéricas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de gráficos de dispersão (base R)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(auto[, <span class="sc">-</span><span class="dv">9</span>])</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-mpg-scatterplot-base" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mpg-scatterplot-base-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="MB751_AULA01_files/figure-html/fig-mpg-scatterplot-base-1.png" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mpg-scatterplot-base-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Matriz de gráficos de dispersão para massa de dados <code>mpg</code> (biblioteca <code>base R</code>)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GGally)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de gráficos de dispersão (GGali)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggpairs</span>(auto[, <span class="sc">-</span><span class="dv">9</span>])</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-mpg-scatterplot-ggally" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mpg-scatterplot-ggally-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="MB751_AULA01_files/figure-html/fig-mpg-scatterplot-ggally-1.png" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mpg-scatterplot-ggally-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11: Matriz de gráficos de dispersão para massa de dados <code>mpg</code> (biblioteca <code>GGali</code>)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Examinar as relações entre os pares de variáveis pode demandar tempo e esforço, mas fornece informações valiosas, incluindo uma melhor avaliação das relações marginais entre as variáveis. Observamos que pode existir algum tipo de relação estatística entre <code>mpg</code> e cada uma das demais variáveis consideradas. Veja que o diagrama de dispersão para o par <code>mpg</code>, <code>modelyear</code> sugere, por exemplo, que automóveis mais modernos tendem a apresentar valores maiores para <code>mpg</code> do que modelos mais antigos.</p>
+<p>Podemos ainda examinar a relação entre duas variáveis, condicionando a uma outra variável categórica. A seguir, comparamos a relação entre <code>mpg</code> e <code>hp</code>, considerando as diferentes categorias de <code>cylinder</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(auto, <span class="fu">aes</span>(<span class="at">x =</span> hp, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># adiciona pontos </span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># (cores e símbolos distintos para diferentes classes da variável `cylinder`)</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> cylinder, <span class="at">shape =</span> cylinder)) <span class="sc">+</span> </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># adiciona retas de tendência</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color =</span> cylinder), <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-mpg-scatterplot-condicional" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mpg-scatterplot-condicional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="MB751_AULA01_files/figure-html/fig-mpg-scatterplot-condicional-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mpg-scatterplot-condicional-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12: Condicionando a uma variável categórica
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Nesse gráfico, cada ponto representa um automóvel da base de dados e as cores e os símbolos identificam o número de cilindros. Podemos observar que, para motores de oito cilindros, o aumento de potência (<code>hp</code>) não parece reduzir significativamente o rendimento (<code>mpg</code>). Já para motores com quatro cilindros, há uma queda acentuada no rendimento do automóvel conforme a potência aumenta. Essas diferenças contextuais evidenciam a importância de analisar também as relações condicionais, a fim de enriquecer nossa compreensão dos dados e orientar hipóteses a serem investigadas em estudos futuros.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiada");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
