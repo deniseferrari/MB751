@@ -161,12 +161,16 @@ window.Quarto = {
   <li><a href="#o-experimento-de-bernoulli" id="toc-o-experimento-de-bernoulli" class="nav-link" data-scroll-target="#o-experimento-de-bernoulli">O Experimento de Bernoulli</a></li>
   <li><a href="#distribuição-de-bernoulli" id="toc-distribuição-de-bernoulli" class="nav-link" data-scroll-target="#distribuição-de-bernoulli">Distribuição de Bernoulli</a></li>
   <li><a href="#distribuição-binomial" id="toc-distribuição-binomial" class="nav-link" data-scroll-target="#distribuição-binomial">Distribuição Binomial</a></li>
+  <li><a href="#distribuição-geométrica" id="toc-distribuição-geométrica" class="nav-link" data-scroll-target="#distribuição-geométrica">Distribuição Geométrica</a></li>
+  <li><a href="#outras-distribuições" id="toc-outras-distribuições" class="nav-link" data-scroll-target="#outras-distribuições">Outras Distribuições</a></li>
   </ul></li>
   <li><a href="#distribuições-associadas-a-processos-de-poisson" id="toc-distribuições-associadas-a-processos-de-poisson" class="nav-link" data-scroll-target="#distribuições-associadas-a-processos-de-poisson">Distribuições Associadas a Processos de Poisson</a>
   <ul class="collapse">
   <li><a href="#uma-aproximação-para-a-distribuição-binomial" id="toc-uma-aproximação-para-a-distribuição-binomial" class="nav-link" data-scroll-target="#uma-aproximação-para-a-distribuição-binomial">Uma aproximação para a Distribuição Binomial</a></li>
   <li><a href="#distribuição-de-poisson" id="toc-distribuição-de-poisson" class="nav-link" data-scroll-target="#distribuição-de-poisson">Distribuição de Poisson</a></li>
   <li><a href="#o-processo-de-poisson" id="toc-o-processo-de-poisson" class="nav-link" data-scroll-target="#o-processo-de-poisson">O Processo de Poisson</a></li>
+  <li><a href="#distribuição-exponencial" id="toc-distribuição-exponencial" class="nav-link" data-scroll-target="#distribuição-exponencial">Distribuição Exponencial</a></li>
+  <li><a href="#distribuição-gama" id="toc-distribuição-gama" class="nav-link" data-scroll-target="#distribuição-gama">Distribuição Gama</a></li>
   </ul></li>
   <li><a href="#distribuição-normal" id="toc-distribuição-normal" class="nav-link" data-scroll-target="#distribuição-normal">Distribuição Normal</a>
   <ul class="collapse">
@@ -2137,6 +2141,127 @@ D3: Compra se observar pelo menos 10 indivíduos imunizados</p>
 </div>
 </div>
 </section>
+<section id="distribuição-geométrica" class="level3">
+<h3 class="anchored" data-anchor-id="distribuição-geométrica">Distribuição Geométrica</h3>
+<p>Vimos anteriormente que podemos modelar o no de sucessos em um número fixo de experimentos de Bernoulli, utilizando a distribuição binomial. No entanto, podemos estar interessados em responder a outras perguntas associadas a um processo de Bernoulli. Por exemplo, podemos desejar modelar não o número de sucessos, mas <strong>o número de experimentos de Bernoulli necessários até que se observe o primeiro sucesso</strong>. Esta é uma questão que pertence a uma outra classe importante de problemas, associada ao tempo que se deve esperar até que observar a ocorrência de um certo evento de interesse. Esta classe de problemas surge em diferentes contextos e, portanto, eles podem ser modelados de diferentes maneiras. No contexto de um processo de Bernoulli, esse tipo de situação pode ser modelada utilizando a distribuição geométrica, como veremos a seguir.</p>
+<p>Considere o seguinte experimento:</p>
+<p>Um observador posiciona-se em um cruzamento movimentado e registra se um pedestre tentando atravessar a rua é atropelado por um veículo.</p>
+<p>O experimento tem dois resultados possíveis:<br>
+S = a pessoa é atropelada<br>
+F = a pessoa não é atropelada</p>
+<p>O experimento consiste em registrar o número de pessoas que conseguem atravessar a rua até que a primeira pessoa seja atropelada.</p>
+<p>Como podemos modelar este experimento?</p>
+<p>Bem, será necessário fazer algumas simplificações para modelar esta situação: vamos assumir que cada pessoa tem a mesma chance <span class="math inline">\(p\)</span> de ser atropelada e que os atropelamentos acontecem de maneira independente uns dos outros, ou seja, não vamos ver várias pessoas sendo atropeladas juntas, nem que um atropelamento terá influência sobre um outro.</p>
+<p>E assim, o espaço amostral, definido pelos possíveis resultados do experimento, é formado pelos eventos S (se a primeira pessoa a atravessar é atropelada), FS (se a segunda pessoa é a primeira a ser atropelada) e, assim por diante.</p>
+<p><span class="math inline">\(\Omega = \{ S,  FS, FFS, \ldots\}\)</span>; em que <span class="math inline">\(S\)</span> = a pessoa é atropelada</p>
+<p>Note que a esse espaço amostral está associada uma v.a. <span class="math inline">\(X\)</span> discreta (já que o conjunto é infinito porém enumerável), que representa o número de pessoas observadas até o primeiro atropelamento. Portanto, <span class="math inline">\(X\)</span> pode assumir qualquer valor no conjunto dos números inteiros maiores que zero.</p>
+<p><span class="math inline">\(X =\)</span> número de pessoas observadas até o primeiro atropelamento:<br>
+<span class="math inline">\(X  = i, \quad i = 1, 2, 3, \ldots\)</span></p>
+<p>A fim de caracterizar probabilisticamente esta situação, precisamos calcular os valores de probabilidade associados a cada valor que a v.a. <span class="math inline">\(X\)</span> pode assumir, isto é, precisamos determinar a fdp de <span class="math inline">\(X\)</span>.</p>
+<p>A probabilidade de <span class="math inline">\(X\)</span> assumir valor 1, que representa a situação em que a primeira pessoa a atravessar a rua é a primeira a ser atropelada, vale <span class="math inline">\(p\)</span>, que é a probabilidade de qualquer pessoa ser atropelada por um veículo.</p>
+<p>Para <span class="math inline">\(X =2\)</span>, a probabilidade vale <span class="math inline">\((1-p) \times p\)</span>, pois temos um fracasso que ocorre com probabilidade <span class="math inline">\((1-p)\)</span>, seguido de um sucesso, que ocorre com probabilidade <span class="math inline">\(p\)</span>.</p>
+<p>Para <span class="math inline">\(X = 3\)</span>, temos dois fracassos, seguidos de um sucesso e, portanto, a probabilidade vale <span class="math inline">\((1-p)^2 \times p\)</span>.</p>
+<p>E prosseguimos… Então, a probabilidade de a n-ésima pessoa a atravessar a rua ser a primeira a ser atropelada vale <span class="math inline">\((1-p)^{n-1} \times p\)</span>. Note que <span class="math inline">\(n-1\)</span> pessoas conseguiram atravessar a rua sem nenhum incidente e o experimento sempre termina com um sucesso.</p>
+<p>Então:</p>
+<p><span class="math display">\[\begin{align*}
+&amp;P[X = 1] = p             &amp;: \text{a 1a. pessoa é a primeira a ser atropelada} &amp;\\
+&amp;P[X = 2] = (1-p) p       &amp;: \text{a 2a. pessoa é a primeira a ser atropelada}\\
+&amp;P[X = 3] = (1-p)^2 p     &amp;: \text{a 3a. pessoa é a primeira a ser atropelada}\\
+&amp;\vdots\\
+&amp;P[X = n] = (1-p)^{n-1} p &amp;:  \text{a n-ésima pessoa é a primeira a ser atropelada}\\
+&amp;\vdots  &amp;n \in \mathcal{Z} &gt; 0
+\end{align*}\]</span></p>
+<p>Portanto, a v.a. <span class="math inline">\(X\)</span> tem distribuição geométrica com parâmetro <span class="math inline">\(p\)</span> se representa o número de experimentos de Bernoulli necessários até que se observe o primeiro sucesso, em que a probabilidade de observar um sucesso a cada experimento vale <span class="math inline">\(p\)</span>.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Seja a v.a. <span class="math inline">\(X \sim Geom (p)\)</span>:</p>
+<p><span class="math inline">\(X =\)</span> no. de repetições de um experimento de Bernoulli até observar o primeiro sucesso</p>
+<p>A fdp da v.a. <span class="math inline">\(X\)</span> é dada pela expressão abaixo. <span class="math display">\[
+\begin{align*}
+  &amp;{} f_{X}(x) = \left\{
+  \begin{array}{rl}
+    q^{x-1}p , &amp; x = 1, 2, \ldots \\
+    0,           &amp; c.c.
+  \end{array}\right.
+  \quad 0 \leq p \leq 1; \quad q = 1-p \\
+  \\
+  &amp;{} E[X] = \frac{1}{p} \qquad Var[X] = \frac{1-p}{p^2}
+\end{align*}
+\]</span></p>
+</div>
+</div>
+</div>
+<p>Da maneira que definimos o experimento, a v.a. <span class="math inline">\(X\)</span> pode assumir qualquer valor inteiro maior que zero. No entanto, é possível definir a v.a. Geométrica como o número de tentativas <strong>antes</strong> do primeiro sucesso, de forma que o suporte da função passa a incluir o zero. Para a versão da v.a. aleatória apresentada, o valor esperado de <span class="math inline">\(X\)</span> é dado <span class="math inline">\(1/p\)</span>, e a variância de <span class="math inline">\(X\)</span> vale <span class="math inline">\((1-p)/p^2\)</span>.</p>
+<section id="propriedade-de-ausência-de-memória" class="level4">
+<h4 class="anchored" data-anchor-id="propriedade-de-ausência-de-memória">Propriedade de Ausência de Memória</h4>
+<p>A distribuição geométrica tem uma propriedade muito interessante que se chama “Ausência de Memória”, isto é, a distribuição “esquece” o que aconteceu no passado. Esta propriedade é enunciada da seguinte forma:</p>
+<p>Temos, para n, k = 1, 2, …</p>
+<p><span class="math display">\[P[X &gt; n+k |X&gt; k] = P[X &gt; n]\]</span></p>
+<p>É possível chegar a essa igualdade a partir da definição de probabilidade condicional:</p>
+<p><span class="math display">\[\begin{align*}
+  P[X &gt; n+k |X &gt; k] &amp;= \frac{P[X &gt; n+k] \cap P[X &gt; k]}{P[X &gt; k]}\\
+                    &amp;= \frac{P[X &gt; n+k]}{P[X &gt; k]}\\
+                    &amp;= \frac{(1-p)^{n+k}}{(1-p)^k} = (1-p)^n = P[X &gt; n].
+\end{align*}\]</span></p>
+<p>Assim, para dois números inteiros positivos <span class="math inline">\(n\)</span> e <span class="math inline">\(k\)</span>, a probabilidade de observar <span class="math inline">\(n\)</span> fracassos adicionais, dado que <span class="math inline">\(k\)</span> fracassos já ocorreram, é igual à probabilidade de observar <span class="math inline">\(n\)</span> fracassos no início da sequência de experimentos de Bernoulli.</p>
+<p>Em outras palavras, a probabilidade de observar uma sequência de fracassos só depende do tamanho dessa sequência, não da sua posição. O processo de Bernoulli sempre se reinicia. Essa propriedade decorre da hipótese de independência dos experimentos que compõe o Processo de Bernoulli. E a família de distribuições geométricas é a única família de distribuições discretas com esta propriedade!</p>
+<p>E uma nota é importante: podemos chamar as distribuições de probabilidade de famílias de distribuições, pois, na verdade, cada distribuição de probabilidades define uma família, já que cada combinação de valores dos parâmetros define uma única distribuição.</p>
+<p>A distribuição geométrica comumente é utilizada para modelar o tempo de vida de sistemas, quando essa medida de tempo é tomada de forma discreta (por exemplo, em dias, meses, anos etc.). Mas, para isso, é necessário que seja válida a hipótese de que o sistema em questão não envelheça, ou seja, a distribuição geométrica não é adequada para modelar tempo de vida em situações em que a probabilidade de que o sistema falhe aumenta com o tempo. Outras distribuições podem ser utilizadas com esse propósito, como veremos no futuro.</p>
+</section>
+</section>
+<section id="outras-distribuições" class="level3">
+<h3 class="anchored" data-anchor-id="outras-distribuições">Outras Distribuições</h3>
+<p>Há outras distribuições que podem ser desenvolvidas a partir de, ou em analogia aos Processos de Bernoulli, que representam diferentes aspectos desses processos que podem nos interessar.</p>
+<p>Nós não entraremos em muitos detalhes, mas é importante pelo menos apresentá-las, a fim de que possamos reconhecer que é possível modelar probabilisticamente diferentes situações de interesse.</p>
+<section id="distribuição-binomial-negativa-ou-distribuição-de-pascal" class="level4">
+<h4 class="anchored" data-anchor-id="distribuição-binomial-negativa-ou-distribuição-de-pascal">Distribuição Binomial Negativa (ou Distribuição de Pascal)</h4>
+<p>A distribuição binomial negativa (também chamada distribuição de Pascal) consiste em uma generalização da distribuição geométrica. Em vez de estarmos interessados em modelar o número de repetições do experimento de Bernoulli necessárias para observar o primeiro sucesso, agora estamos interessados em observar os <span class="math inline">\(k\)</span> primeiros sucessos.</p>
+<p>Portanto a v.a. <span class="math inline">\(X\)</span> segue distribuição binomial negativa com parâmetros <span class="math inline">\(k\)</span> e <span class="math inline">\(p\)</span> se representa o número de repetições necessárias de um experimento de Bernoulli até obter o <span class="math inline">\(k-\)</span>ésimo sucesso.</p>
+<p>A fdp da v.a. binomial negativa é dada por:</p>
+<p><span class="math display">\[f_X(x; k, p) = \binom{x-1}{k-1} p^kq^{x-k} \quad 0 \leq p = 1-q \leq 1; \quad x = k, k+1, k+2, \ldots\]</span></p>
+<p>Podemos também compará-la também com a distribuição binomial. Enquanto a distribuição binomial conta o número de sucessos em um número <strong>fixo de experimentos</strong> de Bernoulli, a distribuição binomial negativa modela o número de experimentos necessários para observar um determinado <strong>número fixo</strong> <span class="math inline">\(k\)</span> <strong>de sucessos</strong>.</p>
+</section>
+<section id="distribuição-multinomial" class="level4">
+<h4 class="anchored" data-anchor-id="distribuição-multinomial">Distribuição Multinomial</h4>
+<p>Podemos imaginar uma outra situação, em que generalizaremos o experimento de Bernoulli. Agora, consideraremos um experimento que pode ter não apenas dois, mas um número <span class="math inline">\(m\)</span> finito de resultados possíveis. Um experimento como esse é chamado de <strong>experimento multinomial</strong>.</p>
+<p>A v.a. <span class="math inline">\(X_i\)</span> com distribuição multinomial serve de modelo para a seguinte situação: há um total de <span class="math inline">\(n\)</span> experimentos independentes. Cada um desses experimentos pode resultar em uma de <span class="math inline">\(m\)</span> possibilidades. A probabilidade do resultado <span class="math inline">\(i\)</span> vale <span class="math inline">\(p_i\)</span> em cada repetição do experimento (ou seja, também temos independência e estacionariedade).</p>
+<p>A v.a. <span class="math inline">\(X_i\)</span> conta o número de ocorrências de cada resultado possível nas <span class="math inline">\(n\)</span> repetições do experimento multinomial.</p>
+<p><span class="math display">\[\mathbf{X} = (X_1, X_2, \ldots, X_m); \qquad
+   \mathbf{p} = (p_1, p_2, \ldots, p_m)\]</span></p>
+<p><span class="math display">\[f_{\mathbf{X}}(\mathbf{x}; \mathbf{p}, n) = \frac{n!}{x_1!x_2! \ldots x_m!} p_1^{x_1} p_2^{x_2} \ldots p_m^{x_m} \;:\qquad  \sum_{i=1}^{m} x_i = n, \;\sum_{i=1}^{m} p_i = 1.\]</span></p>
+<p>Suponha que desejamos avaliar a robustez de um componente aeronáutico complexo quando sofre uma colisão com um objeto (por exemplo, um pássaro). O componente pode ser danificado de várias maneiras, cada uma com uma probabilidade diferente. Podemos utilizar a distribuição multinomial se estivermos interessados em modelar as ocorrências de determinadas combinações dos possíveis danos causados ao componente.</p>
+</section>
+<section id="distribuição-multinomial-negativa" class="level4">
+<h4 class="anchored" data-anchor-id="distribuição-multinomial-negativa">Distribuição Multinomial Negativa</h4>
+<p>Outra distribuição interessante associada a uma variação do experimento de Bernoulli é a distribuição Multinomial Negativa. Ela consiste em uma generalização da distribuição binomial negativa, que modelava o número de repetições do experimento de Bernoulli necessário para observar <span class="math inline">\(k\)</span> sucessos.</p>
+<p>No caso da distribuição Multinomial Negativa, temos um experimento multinomial e desejamos modelar o número de ocorrências de cada resultado possível observado em um número de repetições do experimento multinomial necessário para observar uma certa quantidade fixa <span class="math inline">\(k_0\)</span> de ocorrências de um desses resultados possíveis, <span class="math inline">\(X_0\)</span>:</p>
+<p><span class="math display">\[\mathbf{X} = (X_0, X_1, X_2, \ldots, X_m); \qquad %\]
+   \mathbf{p} = (p_0, p_1, p_2, \ldots, p_m); \qquad p_0 = 1 - \sum_{i=1}^m p_i\]</span></p>
+<p><span class="math display">\[E[\mathbf{X}] = \frac{k_0}{p_0} \mathbf{p}; \qquad
+    Var[\mathbf{X}] = \frac{k_0}{p_0^2} \mathbf{p}\mathbf{p}^\prime + \frac{k_0}{p_0} \textsf{diag}(\mathbf{p})\]</span></p>
+</section>
+<section id="distribuição-hipergeométrica" class="level4">
+<h4 class="anchored" data-anchor-id="distribuição-hipergeométrica">Distribuição Hipergeométrica</h4>
+<p>A distribuição hipergeométrica nos dá uma certa probabilidade condicional que ocorre em um processo de Bernoulli. Dado que sabemos haver <span class="math inline">\(k\)</span> sucessos em <span class="math inline">\(N\)</span> repetições do experimento de Bernoulli, desejamos modelar a probabilidade de observar <span class="math inline">\(x\)</span> sucessos nas primeiras <span class="math inline">\(n\)</span> repetições do experimento.</p>
+<p>A v.a. <span class="math inline">\(X\)</span> com distribuição hipergeomética modela o número de sucessos obtidos nas <span class="math inline">\(n\)</span> primeiras repetições do experimento de Bernoulli, dado que sabemos haver <span class="math inline">\(K\)</span> sucessos em <span class="math inline">\(N\)</span> repetições do experimento:</p>
+<p><span class="math display">\[f_X(x; N, K, n) = \frac{{\binom{n}{x}}{\binom{N-n}{K-x}}}{\binom{N}{K}}; \quad 0 \leq x \leq K\]</span></p>
+<p>No denominador, temos o espaço amostral que consiste em todas as maneiras que podemos selecionar <span class="math inline">\(K\)</span> sucessos nas <span class="math inline">\(N\)</span> repetições do experimento. O número de maneiras de obter <span class="math inline">\(x\)</span> sucessos nas <span class="math inline">\(n\)</span> primeiras repetições do experimento é dado pela combinação de <span class="math inline">\(n\)</span>, <span class="math inline">\(x\)</span>-a-<span class="math inline">\(x\)</span>; e a próxima combinação corresponde ao número de maneiras de obter os <span class="math inline">\(K-x\)</span> sucessos restantes nas <span class="math inline">\(N-n\)</span> repetições restantes.</p>
+<p>Note que essa é a mesma probabilidade que se obtém ao modelar o número de sucessos em uma sequência de sorteios realizados <strong>sem reposição</strong> (diferentemente da distribuição binomial, em que os sorteios eram realizados com reposição). Neste sentido, essa distribuição encontra muitas aplicações em amostragem de populações finitas e é melhor compreendida através do exemplo clássico do modelo de urna.</p>
+<p><strong>Modelo de Urna</strong></p>
+<p>Suponha que em uma grande urna existam <span class="math inline">\(N\)</span> bolas idênticas, das quais <span class="math inline">\(K\)</span> são vermelhas. Uma pessoa retira da urna, ao acaso e simultaneamente, <span class="math inline">\(n\)</span> bolas (isso equivale a dizer que os sorteios das bolas são realizado sem reposição) e queremos saber qual a probabilidade de que na amostra retirada <span class="math inline">\(x\)</span> bolas sejam vermelhas.</p>
+<p><span class="math display">\[\frac{\binom{N}{K}{\binom{N-K}{n-x}}}{\binom{N}{n}}\]</span> <span class="math inline">\(N\)</span> bolas, das quais <span class="math inline">\(K\)</span> sucessos; sorteia <span class="math inline">\(n\)</span>, das quais <span class="math inline">\(x\)</span> sucessos</p>
+<p>Como os sorteios são realizados sem reposição, os experimentos de Bernoulli são dependentes, pois a probabilidade de sucesso não se mantém mais constante ao longo do tempo.</p>
+</section>
+<section id="distribuição-hipergeométrica-negativa" class="level4">
+<h4 class="anchored" data-anchor-id="distribuição-hipergeométrica-negativa">Distribuição Hipergeométrica Negativa</h4>
+<p>E, finalmente, temos a distribuição Hipergeométrica Negativa, raramente descrita em textos de graduação, que modela quantos itens devem ser selecionados a partir de uma população finita a fim de observar o <span class="math inline">\(k\)</span>-ésimo sucesso quando a amostragem é realizada sem reposição.</p>
+<p>As distribuições Hipergeomética Negativa e Hipergeométrica têm uma relação análoga entre aquela existente entre as distribuição binomial negativa e binomial, isto é, enquanto a distribuição hipergeométrica modela o no. de sucessos em uma quantidade fixa de sorteios sem reposição, a distribuição hipergeométrica negativa modela o número necessário de sorteios sem reposição para obter uma quantidade fixa de sucessos.</p>
+</section>
+</section>
 </section>
 <section id="distribuições-associadas-a-processos-de-poisson" class="level2">
 <h2 class="anchored" data-anchor-id="distribuições-associadas-a-processos-de-poisson">Distribuições Associadas a Processos de Poisson</h2>
@@ -2343,6 +2468,218 @@ P[X &gt; 15] = 1 - P[X \leq 15] = 1 - \sum_{x=0}^{15}\frac{e^{-\lambda}}{x!}\lam
 <p>Como acabamos de ver, um processo de Poisson consiste em um experimento em que ocorrências de um determinado fenômeno aleatório que possui certas características especiais se dão em um domínio contínuo. A v.a. de Poisson é utilizada para modelar o número dessas ocorrências.</p>
 <p>Agora, suponha que uma dessas ocorrências tenha apenas sido observada. Por exemplo, uma família tenha acabado de chegar ao posto onde se encontra o caminhão pipa. O que podemos afirmar sobre o tempo de espera até a chegada da próxima família? Podemos perceber que se as chegadas acontecem de maneira aleatória, de forma que o instante dessas ocorrências é também uma variável aleatória. Portanto, resta determinar qual a distribuição do tempo de espera até observar a próxima ocorrência em um Processo de Poisson? Este aspecto do processo de Poisson é modelado pela distribuição Exponencial.</p>
 </section>
+<section id="distribuição-exponencial" class="level3">
+<h3 class="anchored" data-anchor-id="distribuição-exponencial">Distribuição Exponencial</h3>
+<p>Para um processo de Poisson, consideremos <span class="math inline">\(X\)</span> o instante de ocorrência do primeiro evento. Se o primeiro evento ocorrer após o instante <span class="math inline">\(t\)</span>, isso significa que nenhuma ocorrência no processo de Poisson foi observada no intervalo que vai de 0 a <span class="math inline">\(t\)</span>. Portanto, a probabilidade de observar a primeira ocorrência após o instante <span class="math inline">\(t\)</span> vale:</p>
+<p><span class="math inline">\(P[X &gt; t] = P[\)</span> nenhuma ocorrência no intervalo <span class="math inline">\((0,t]] = P_{0}(t) = e^{-\lambda t}\)</span></p>
+<p>A função distribuição acumulada para essa v.a. corresponde à probabilidade de que o tempo de espera seja no máximo igual a <span class="math inline">\(t\)</span>, que é o complementar da probabilidade calculada anteriormente. Assim, a FDA de <span class="math inline">\(X\)</span> vale:</p>
+<p><span class="math inline">\(P[X \leq t] = F_{X}(t) = 1 - P[X &gt; t] = 1 - e^{-\lambda t}, \quad t &gt;0\)</span>.</p>
+<p>A fdp de <span class="math inline">\(X\)</span> pode ser obtida derivando-se a FDA:</p>
+<p><span class="math display">\[f_{X}(x) =\frac{dF_X(x)}{dx} = \lambda e^{-\lambda x}, \quad x &gt; 0\]</span></p>
+<p>Sendo assim, uma v.a. <span class="math inline">\(X\)</span> que representa o tempo de espera entre ocorrências sucessivas em um processo de Poisson tem distribuição exponencial com parâmetro <span class="math inline">\(\lambda\)</span>, em que <span class="math inline">\(\lambda\)</span> é a taxa de ocorrência no processo de Poisson. Por se tratar de um tempo de espera, a v.a. pode assumir valores reais não negativos, de acordo com fdp <span class="math inline">\(f_X(x)\)</span>, dada abaixo.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Seja a v.a. <span class="math inline">\(X \sim Exp(\lambda)\)</span></p>
+<p><span class="math inline">\(X =\)</span> tempo de espera entre ocorrências sucessivas em um processo de Poisson</p>
+<p><span class="math display">\[\begin{align*}
+  &amp;{} f_{X}(x) = \left\{
+  \begin{array}{rl}
+    \lambda e^{-\lambda x}, &amp; x \geq 0\\
+    0,           &amp; c.c.
+  \end{array}\right.
+  \quad \lambda &gt; 0
+  \\ \\
+  &amp;{} E[X] = \frac{1}{\lambda} \qquad Var[X] = \frac{1}{\lambda^2}
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<p>É possível mostrar que o valor esperado desta v.a. é <span class="math inline">\(1/\lambda\)</span>, ou seja, o tempo médio de espera é o inverso da taxa média de ocorrências, e que a variância vale <span class="math inline">\(1/\lambda^2\)</span>.</p>
+<p>Vimos anteriormente que o processo de Poisson pode ser visto como um limite para um processo de Bernoulli, portanto há analogias entre esses dois tipos de processos aleatórios e também entre as distribuições associadas a eles.</p>
+<p>A distribuição de Poisson é análoga à distribuição Binomial; ambas descrevem o número de ocorrências (ou sucessos). A distribuição exponencial pode ser vista como uma análoga contínua da distribuição geométrica; ambas descrevem o tempo de espera. Uma v.a. com distribuição geométrica estava associada a um processo de Bernoulli e descrevia o número de experimentos necessários até obter o primeiro sucesso (ou seja, num domínio discreto); já a distribuição exponencial descreve o tempo de espera até observar a primeira ocorrência em um processo de Poisson, cujo domínio é contínuo.</p>
+<p>Como podemos suspeitar, existe também relação limite entre as distribuições geométrica e exponencial. Se <span class="math inline">\(Y\)</span> for uma v.a. com distribuição geométrica e probabilidade de sucesso igual a <span class="math inline">\(\lambda/n\)</span>, então a distribuição de <span class="math inline">\(Y/n\)</span> converge para a distribuição exponencial com parâmetro <span class="math inline">\(\lambda\)</span>.</p>
+<section id="propriedade-de-ausência-de-memória-1" class="level4">
+<h4 class="anchored" data-anchor-id="propriedade-de-ausência-de-memória-1">Propriedade de Ausência de Memória</h4>
+<p>Geralmente em Engenharia, modelos matemáticos servem de representações simplificadas de fenômenos observados no mundo real. Tais simplificações frequentemente são resultantes de nossa incapacidade de perceber e representar o fenômeno em sua totalidade, ou podem ser necessárias para tornar o problema matematicamente tratável. No entanto, sempre há o risco de super-simplificar o problema, de forma que as conclusões obtidas a partir da solução matemática podem acabar vagamente relacionadas ao problema real. Então, no processo de modelagem matemática de um fenômeno real, é necessário dosar de maneira adequada o nível de simplificação do modelo a fim de que ele seja tratável, mas não tanto que se acabe por resolver perfeitamente um problema que não existe. Uma simplificação comumente adotada na modelagem de certos fenômenos aleatórios é de que a v.a. tem distribuição exponencial. Como vimos, esta variável aleatória descreve tempo de espera e, por este motivo, é frequentemente utilizada em confiabilidade para modelar o tempo de vida de sistemas.</p>
+<p>Assim como sua correspondente discreta, a distribuição exponencial também possui a propriedade de ausência de memória, enunciada a seguir:</p>
+<p><span class="math display">\[P[X \geq t + s | X \geq t]  = P [X \geq s], \quad \forall t, s \geq 0\]</span></p>
+<p>Se modelarmos a vida de um componente por uma v.a. <span class="math inline">\(X\)</span> com distribuição exponencial, a propriedade de ausência de memória afirma o seguinte: a probabilidade de que o componente funcione um período de pelo menos <span class="math inline">\(t+s\)</span>, dado que funcionou pelo menos até o instante <span class="math inline">\(t\)</span> é igual à probabilidade inicial de que dure pelo menos até o instante <span class="math inline">\(s\)</span>. Em outras palavras, se o componente durou até o instante <span class="math inline">\(t\)</span>, então a distribuição do restante de vida é igual à distribuição da vida original. Ou seja, a vida residual do componente tem fdp independente da idade do componente, o componente “não lembra” que já funcionou até o instante <span class="math inline">\(t\)</span>, ele não sofre desgaste, é tão bom quanto um novo. Dizemos que a função taxa de falha para a distribuição exponencial é constante e vale <span class="math inline">\(\lambda\)</span>.</p>
+<p>Esta é uma hipótese um tanto restritiva que implicitamente precisamos aceitar como válida ao utilizar a distribuição Exponencial para modelar a vida de componentes, instrumentos ou sistemas. Por este motivo, a distribuição exponencial deve ser utilizada com cautela, já que há inúmeras situações em que esta hipótese não é válida. Neste caso, o modelo exponencial não é adequado e outros modelos para tempo de vida são possíveis, tais como a distribuição de Weibull, que é uma generalização da distribuição exponencial. A distribuição de Weibull é bastante flexível e permite representar sistemas com função taxa de falha crescente (para valores do parâmetro <span class="math inline">\(\beta &gt; 1\)</span> ), constante ( <span class="math inline">\(\beta= 1\)</span> ) e decrescente ( <span class="math inline">\(\beta &lt; 1\)</span> ).</p>
+<p><strong>Distribuição Exponencial:</strong></p>
+<p><span class="math inline">\(F_X(x) = P[X \leq x] = 1 - e^{-\lambda x}\)</span> : função taxa de falha constante = <span class="math inline">\(\lambda\)</span></p>
+<p><strong>Distribuição de Weibull:</strong></p>
+<p><span class="math inline">\(F_X(x) = P[X \leq x] = 1 - e^{-(x/\eta)^\beta}; \quad x \geq 0, \beta &gt;0, \eta &gt;0\)</span> : função taxa de falha crescente <span class="math inline">\((\beta &gt; 1)\)</span>, constante <span class="math inline">\((\beta=1)\)</span>, decrescente <span class="math inline">\((\beta &lt; 1)\)</span></p>
+<p>O caso de função taxa de falha crescente é bastante intuitivo e representa situações em que o sistema se degrada e sofre desgaste com o tempo. O caso de função taxa de falha decrescente representa situações em que o sistema “melhora” com o tempo. Um exemplo clássico é um sistema que apresenta um período de mortalidade infantil. Este tipo de falha normalmente está associado a erro de projeto, baixo controle de qualidade ou defeitos de material, de forma que quando o período inicial é superado, o sistema apresenta menor taxa de falha conforme o tempo passa.</p>
+<p>Vejamos alguns exemplos.</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 20</strong></span> <br> Suponha que é razoável modelar o tempo de espera por atendimento em um banco por uma v.a. com distribuição exponencial, com média 10 min (isto é, <span class="math inline">\(\lambda = 1/10\)</span>).</p>
+<ul>
+<li><p>Qual a probabilidade de que um cliente espere por um tempo maior do que 15 min?</p></li>
+<li><p>Qual a probabilidade de que um cliente espere por um tempo maior do que 15 min, dado que já está esperando há 10 min?</p></li>
+</ul>
+<p><em>Solução:</em> Representamos o tempo que o cliente espera na fila do banco por uma v.a. <span class="math inline">\(X\)</span> com distribuição Exponencial. O tempo médio de espera é de 10 min, portanto o parâmetro <span class="math inline">\(\lambda\)</span> da distribuição vale 1/10.</p>
+<p>Seja <span class="math inline">\(X\)</span> = tempo que o cliente espera na fila do banco <span class="math inline">\(X \sim Exp(\lambda = 1/10)\)</span>.</p>
+<ul>
+<li><p>Queremos <span class="math inline">\(P[X &gt; 15]\)</span>: <span class="math inline">\(P[X &gt; 15] = 1 - P[X \leq 15] = e^{-\lambda t} = e^{- 15/10} \approx 0.223\)</span> Portanto, esta probabilidade é de aproximadamente 22,3%.</p></li>
+<li><p>Queremos <span class="math inline">\(P[X &gt; 15 | X &gt; 10]\)</span>: <span class="math inline">\(P[X &gt; 15 | X &gt; 10] = P[X &gt; 10 + 5 | X &gt; 10] = P[X &gt; 5] = e^{-5\lambda}= e^{-5/10}\)</span> <span class="math inline">\(\approx 0.607\)</span></p></li>
+</ul>
+<p>Pela propriedade de ausência de memória, como a distribuição exponencial não se lembra de que o cliente já está esperando há 10 min, a probabilidade de que espere por pelo menos 5 min adicionais é igual à probabilidade de ele esperar pelo menos 5 min no momento em que entra no banco. Neste caso, a probabilidade desejada vale aproximadamente 60%.</p>
+<p>Os comandos para obter esses valores de probabilidade utilizando o software R, são dados abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pexp</span>(<span class="dv">15</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2231302</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pexp</span>(<span class="dv">5</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6065307</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>O próximo exemplo traz uma ilustração simples de aplicação de distribuição exponencial em confiabilidade.</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 21</strong></span> <br> Um sistema contém componentes cuja vida (em anos) é dada pela v.a. <span class="math inline">\(T\)</span>, que segue distribuição exponencial com média 5.</p>
+<p>Se 5 desses componentes são instalados em diferentes sistemas, qual a probabilidade de que pelo menos 2 deles continuem funcionando ao final de 8 anos?</p>
+<p><em>Solução:</em> Sabemos que o tempo de falha de cada um dos componentes pode ser adequadamente modelado por uma va exponencial com média 5, de forma que a taxa de falha, <span class="math inline">\(\lambda\)</span> vale 1/5. Portanto, temos: <span class="math inline">\(T \sim Exp(\lambda = 1/5)\)</span>.</p>
+<p>Em primeiro lugar, precisamos calcular a probabilidade de que a falha em um desses componentes ocorra após um período de 8 anos, isto é, precisamos calcular <span class="math inline">\(P[T \geq 8]\)</span>.</p>
+<p>Para um componente: <span class="math inline">\(P[T \geq 8] = \frac{1}{5} \int_{8}^{\infty} e^{-t/5} dt = e^{8/5} \approx 0.2\)</span></p>
+<p>Mas nós ainda não resolvemos o problema completamente… essa é apenas a probabilidade de que um componente dure pelo menos 8 anos!</p>
+<p>Queremos a probabilidade de que pelo menos dois de um total de 5 desses componentes instalados em sistemas independentes durem pelo menos 8 anos. Ou seja, temos uma outra variável aleatória. Os sistemas são idênticos e funcionam de forma independente. Precisamos definir uma v.a. <span class="math inline">\(X\)</span> com distribuição binomial, com parâmetros <span class="math inline">\(n =5\)</span> (esse é o número de repetições do experimento de Bernoulli) e probabilidade de sucesso (que neste caso significa funcionar por pelo menos 8 anos) igual a 0,2. Portanto, a probabilidade desejada é <span class="math inline">\(P[X \geq 2]\)</span>.</p>
+<p>Seja <span class="math inline">\(X=\)</span> número de componentes funcionando ao final de 8 anos <span class="math inline">\(X \sim Bin(n = 5, p = 0.2)\)</span></p>
+<p><span class="math display">\[\begin{align*}
+  P[X \geq 2] = \sum_{x=2}^{5}Bin(n=5, p=0.2)
+              &amp;= 1- \sum_{x=0}^{1}Bin(n=5, p=0.2)\\
+              &amp;= 1 - 0.7373 = 0.2627\\
+\end{align*}\]</span></p>
+<p>A probabilidade de que pelo menos 2 dos 5 componentes instalados continuem funcionando ao final de 8 anos vale aproximadamente 26%.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Vejamos, agora, um outro exercício interessante que faz uso da propriedade de ausência de memória.</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 22</strong></span> <br> Em um pronto-atendimento oftalmológico há dois consultórios médicos e os pacientes podem ser atendidos por qualquer um dos dois plantonistas. Quando o paciente C chega até a clínica, descobre que os dois consultórios já estão ocupados, um pelo paciente A e o outro, pelo B. O paciente C é informado que será atendido assim que terminar a consulta de um dos pacientes A ou B.</p>
+<p>Suponha que o tempo de duração de uma consulta seja uma v.a. com distribuição exponencial com média <span class="math inline">\(1/\lambda\)</span>.</p>
+<p>Qual a probabilidade de que, dos três pacientes, C seja o último a deixar a clínica?</p>
+<p><em>Solução:</em></p>
+<p>A resposta pode se obtida utilizando a propriedade de ausência de memória, seguindo este raciocínio: no momento em que um dos consultórios for liberado e o paciente C iniciar o atendimento, um dos outros dois pacientes A ou B, digamos B, terá deixado a clínica enquanto o paciente A ainda estará sendo atendido. No entanto, devido à propriedade de ausência de memória, o tempo remanescente de atendimento do paciente A tem distribuição exponencial com média <span class="math inline">\(1/\lambda\)</span>, independentemente do tempo que a consulta já durou. Ou seja, a situação aleatória se comporta como se o atendimento do paciente A tivesse acabado de iniciar, no mesmo instante em que o atendimento do paciente C foi iniciado. Sendo assim, a probabilidade de que o paciente A deixe a clínica antes do paciente C é de 50%.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="distribuição-gama" class="level3">
+<h3 class="anchored" data-anchor-id="distribuição-gama">Distribuição Gama</h3>
+<p>Assim como encontramos analogias entre a distribuição exponencial e a distribuição geométrica, em um processo de Poisson, a distribuição correspondente à binomial negativa no processo de Bernoulli é a distribuição Gama. Essa v.a. modela o tempo de espera até observar um certo número de ocorrências em um processo de Poisson.</p>
+<p>Sendo assim, uma v.a. <span class="math inline">\(X\)</span> tem distribuição gama com parâmetros <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span> em que <span class="math inline">\(\alpha\)</span> é o número de ocorrências desejadas (também chamado parâmetro de forma) e <span class="math inline">\(\beta\)</span> é o inverso da taxa de ocorrência do processo de Poisson (também chamado de parâmetro de escala). Por se tratar de um tempo de espera, a v.a. pode assumir valores reais não negativos, de acordo com fdp <span class="math inline">\(f_X(x)\)</span> abaixo.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Seja a v.a. <span class="math inline">\(X \sim Gama(\alpha, \beta)\)</span></p>
+<p><span class="math inline">\(X =\)</span> tempo de espera até <span class="math inline">\(\alpha\)</span>-ésima ocorrência em um processo de Poisson</p>
+<p><span class="math display">\[\begin{align*}
+  &amp;{} f_{X}(x) = \left\{
+  \begin{array}{rl}
+    \frac{1}{\beta^\alpha\Gamma(\alpha)}x^{\alpha -1} e^{-x/\beta}, &amp; x \geq 0\\
+    0,           &amp; c.c.
+  \end{array}\right.
+  \quad \alpha, \; \beta &gt; 0
+  \\ \\
+  &amp;{} E[X] = \alpha\beta \qquad Var[X] = \alpha\beta^2
+\end{align*}\]</span></p>
+<p><strong>OBS: Função Gama</strong> <span class="math display">\[\Gamma(\alpha) = \int_{0}^{\infty} x^{\alpha -1} e^{-x} dx, \; \alpha &gt;0  \quad \textsf{ tq: } \quad \begin{array}{l}
+    \alpha \in \mathcal{Z}^{+}: \Gamma(\alpha) = (\alpha-1)! \quad (\textsf{dist. Erlang})\\
+    \Gamma(1/2) = \sqrt{\pi}
+  \end{array}\]</span></p>
+</div>
+</div>
+</div>
+<p>A distribuição gama tem valor esperado <span class="math inline">\(\alpha \beta\)</span> (o mesmo que <span class="math inline">\(\alpha/\lambda\)</span> ) e variância <span class="math inline">\(\alpha \beta^2\)</span> (ou seja, <span class="math inline">\(\alpha/\lambda^2\)</span> ). Obviamente, quando <span class="math inline">\(\alpha = 1\)</span>, temos a distribuição exponencial. Quando <span class="math inline">\(\alpha\)</span> é um número inteiro positivo, a distribuição resultante também é chamada de distribuição de Erlang, em referência ao engenheiro dinamarquês Agner Erlang (1878-1929), que deu contribuições pioneiras para o desenvolvimento da teoria de filas.</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 23</strong></span> <br> Suponha que chamadas chegando a uma central de atendimento sigam um processo de Poisson com taxa de 5 telefonemas por minuto.</p>
+<p>Qual a probabilidade de que não mais que um minuto se passe até dois telefonemas sejam recebidos?</p>
+<p><em>Solução:</em></p>
+<p>Seja <span class="math inline">\(X=\)</span> tempo até que 2 chamadas sejam recebidas. Temos uma va gama, com parâmetros <span class="math inline">\(\alpha = 2\)</span> e <span class="math inline">\(\beta = 1/\lambda = 1/5\)</span>.</p>
+<p><span class="math inline">\(X \sim Gama(\alpha = 2, \beta = 1/\lambda = 1/5)\)</span></p>
+<p><span class="math inline">\(P[X \leq 1] = \int_{0}^{1} \frac{1}{\beta^2}x e^{-x/\beta} dx = 25 \int_{0}^{1} x e^{-5x} dx = 1 - e^{-5}(1+5) = 0.96\)</span></p>
+<p>Portanto, a probabilidade de que <span class="math inline">\(X\)</span> seja menor ou igual a 1 vale aproximadamente 96%. Este valor de probabilidade pode ser facilmente obtido com o auxílio do R, utilizando o código abaixo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pgamma</span>(<span class="dv">1</span>, <span class="at">shape =</span> <span class="dv">2</span>, <span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">5</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9595723</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Vejamos agora uma aplicação da distribuição Gama a um problema de tomada de decisão:</p>
+<div class="callout callout-style-simple callout-tip no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<div id="exm-" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 24</strong></span> <br></p>
+<p>Vamos supor que as reclamações de clientes a respeito de um certo produto sejam adequadamente modeladas de acordo com um processo de Poisson, de forma que o período entre duas reclamações sucessivas siga a distribuição gama com parâmetros <span class="math inline">\(\alpha = 1\)</span> e <span class="math inline">\(\beta = 4\)</span>. Isto nos daria uma expectativa de 4 meses até observar a primeira reclamação.</p>
+<p>Não satisfeito com essa situação, o fabricante implementou modificações no controle de qualidade do processo de produção, de forma que, após essas modificações, a primeira reclamação ocorreu somente após 12 meses.</p>
+<p>Antes que essa modificação seja implementada em outras plantas da empresa, é necessário determinar se este aparente aumento no tempo de espera até a primeira reclamação foi resultado das modificações no processo produtivo, ou seja, queremos saber se o novo controle de qualidade foi efetivo.</p>
+<p><em>Solução:</em></p>
+<p>Antes de modelar o problema matematicamente, precisamos identificar que aspecto desse problema nos ajuda a tomar essa decisão.</p>
+<p>Veja que estamos monitorando uma v.a. <span class="math inline">\(X\)</span>, que descreve o tempo de espera até a primeira reclamação.</p>
+<p>Se o processo modificado for idêntico ao original, observaremos um tempo de espera de 12 meses com alta probabilidade; isso implica que o novo controle de qualidade não foi efetivo e que o processo é descrito pela distribuição Gama com parâmetros <span class="math inline">\(\alpha = 1\)</span> e <span class="math inline">\(\beta = 4\)</span>. Neste caso, podemos concluir que observar um tempo de espera de 12 meses é algo corriqueiro, que não estamos diante de uma situação incomum. Esta seria uma observação completamente compatível com o esperado para um processo como esse.</p>
+<p>Por outro lado, se chegarmos à conclusão de que a probabilidade de observar a primeira reclamação após 12 meses é muito baixa, significa que estamos diante de uma de duas situações: (i) ou acabamos de presenciar a ocorrência de um evento raro; ou (ii) o processo não se comporta da maneira que imaginávamos, de forma que a distribuição que representava o comportamento aleatório não se aplica mais e, portanto, o novo controle de qualidade de fato, modificou o processo produtivo.</p>
+<p>Portanto, precisamos calcular a probabilidade <span class="math inline">\(P[X \geq 12]\)</span> para que possamos chegar a uma conclusão.</p>
+<p>Utilizando as informações apresentadas e, com o auxílio do software R (veja o código fornecido abaixo), obtemos um valor de probabilidade ligeiramente inferior a 5%.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pgamma</span>(<span class="dv">12</span>, <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">scale =</span> <span class="dv">4</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04978707</code></pre>
+</div>
+</div>
+<p>Isso significa que, se o processo produtivo não tiver sido efetivamente modificado com a implantação do novo controle de qualidade, em cerca de 5% das vezes, observaremos um tempo de espera de 12 meses até a primeira reclamação.</p>
+<p>Quão rara é essa situação? A resposta a essa pergunta depende do risco que estamos dispostos a correr ao tomar essa decisão. Se considerarmos que a probabilidade 5% é pequena o bastante para que essa situação não seja considerada corriqueira, então é razoável concluir que a mudança no controle de qualidade foi, de fato, efetiva.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="distribuição-normal" class="level2">
 <h2 class="anchored" data-anchor-id="distribuição-normal">Distribuição Normal</h2>
@@ -2358,7 +2695,7 @@ P[X &gt; 15] = 1 - P[X \leq 15] = 1 - \sum_{x=0}^{15}\frac{e^{-\lambda}}{x!}\lam
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -2387,7 +2724,7 @@ P[X &gt; 15] = 1 - P[X \leq 15] = 1 - \sum_{x=0}^{15}\frac{e^{-\lambda}}{x!}\lam
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -2411,7 +2748,7 @@ P[X &gt; 15] = 1 - P[X \leq 15] = 1 - \sum_{x=0}^{15}\frac{e^{-\lambda}}{x!}\lam
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -2434,7 +2771,7 @@ P[X &gt; 15] = 1 - P[X \leq 15] = 1 - \sum_{x=0}^{15}\frac{e^{-\lambda}}{x!}\lam
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -2452,7 +2789,7 @@ P[X &gt; 15] = 1 - P[X \leq 15] = 1 - \sum_{x=0}^{15}\frac{e^{-\lambda}}{x!}\lam
 </div>
 <div class="callout-body-container">
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 20</strong></span> <br> A tabela de distribuição normal nos dá as probabilidades acumuladas, ou seja, no miolo da tabela temos os valores de <span class="math inline">\(P[Z \leq z] = \Phi(z)\)</span>. Podemos utilizá-la para calcular valores de probabilidades:</p>
+<p><span class="theorem-title"><strong>Exemplo 25</strong></span> <br> A tabela de distribuição normal nos dá as probabilidades acumuladas, ou seja, no miolo da tabela temos os valores de <span class="math inline">\(P[Z \leq z] = \Phi(z)\)</span>. Podemos utilizá-la para calcular valores de probabilidades:</p>
 <ol type="a">
 <li><span class="math inline">\(P[Z \leq 1.25] = \Phi(1.25)\)</span></li>
 </ol>
@@ -2468,7 +2805,7 @@ P[X &gt; 15] = 1 - P[X \leq 15] = 1 - \sum_{x=0}^{15}\frac{e^{-\lambda}}{x!}\lam
 <p>Para determinar o valor desta probabilidade, procuro na vertical a unidade e a primeira casa decimal do quantil desejado (1,2) e na horizontal, o valor da segunda casa decimal (0,05). O valor na interseção de linha e coluna corresponde ao valor de probabilidade acumulada para esse quantil.</p>
 <p>Essa probabilidade pode ser facilmente obtida utilizando o comando abaixo no software R.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.25</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.25</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8943502</code></pre>
 </div>
@@ -2489,7 +2826,7 @@ P[X &gt; 15] = 1 - P[X \leq 15] = 1 - \sum_{x=0}^{15}\frac{e^{-\lambda}}{x!}\lam
 <p><span class="math inline">\(P[Z &gt; 1.25] = 1 - P[Z ≤ 1.25] = 1 - \Phi(1.25) = 1 - 0.8944  = 0.1056\)</span></p>
 <p>Podemos calcular essa probabilidade com o auxílio do software R, de acordo com o comando fornecido abaixo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">1.25</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">1.25</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1056498</code></pre>
 </div>
@@ -2510,7 +2847,7 @@ P[X &gt; 15] = 1 - P[X \leq 15] = 1 - \sum_{x=0}^{15}\frac{e^{-\lambda}}{x!}\lam
 <p><span class="math inline">\(P[Z ≤ -1.25] =  P[Z &gt; 1.25] = 1 - P[Z ≤ 1.25] = 1 - \Phi(1.25) = 0.1056\)</span> (igual ao mesmo valor de probabilidade do item anterior, claro!)</p>
 <p>Novamente, é recomendável utilizar o software R para calcular essa probabilidade, de acordo com o comando fornecido abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.25</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">1.25</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1056498</code></pre>
 </div>
@@ -2536,7 +2873,7 @@ P[X &gt; 15] = 1 - P[X \leq 15] = 1 - \sum_{x=0}^{15}\frac{e^{-\lambda}}{x!}\lam
 <p><span class="math inline">\(P[-0.38 ≤ Z ≤ 1.25] = \Phi(1.25)  + \Phi(0.38) - 1\)</span></p>
 <p>O software R novamente simplifica muito o cálculo desta probabilidade, bastando utilizar o comando dado abaixo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.25</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.38</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">1.25</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.38</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.5423775</code></pre>
 </div>
@@ -2591,7 +2928,7 @@ P[X &gt; 15] = 1 - P[X \leq 15] = 1 - \sum_{x=0}^{15}\frac{e^{-\lambda}}{x!}\lam
 </div>
 <div class="callout-body-container">
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 21</strong></span> <br></p>
+<p><span class="theorem-title"><strong>Exemplo 26</strong></span> <br></p>
 <p>Peças em projeto aeronáutico comumente são unidas através de rebitagem. O cliente define a especificação do diâmetro dos rebites em 3,0 <span class="math inline">\(\pm\)</span> 0,01 mm. Qualquer rebite cujo diâmetro se encontre dentro da especificação será aceitável.</p>
 <p>Considerando o diâmetro dos rebites uma v.a. normalmente distribuída com média <span class="math inline">\(\mu =\)</span> 3,0 e desvio-padrão <span class="math inline">\(\sigma =\)</span> 0,005, que proporção de rebites será rejeitada?</p>
 <p><em>Solução:</em></p>
@@ -2612,7 +2949,7 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 <p>Portanto, espera-se que em média 4,55% dos rebites sejam rejeitados.</p>
 <p>No R, é possível calcular esta probabilidade utilizando o comando abaixo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> (<span class="fu">pnorm</span>(<span class="fl">3.01</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fl">0.005</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">2.99</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fl">0.005</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> (<span class="fu">pnorm</span>(<span class="fl">3.01</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fl">0.005</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">2.99</span>, <span class="at">mean =</span> <span class="dv">3</span>, <span class="at">sd =</span> <span class="fl">0.005</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.04550026</code></pre>
 </div>
@@ -2631,7 +2968,7 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -2658,7 +2995,7 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 </div>
 <div class="callout-body-container">
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 22</strong></span> <br> Companhias aéreas costumam praticar “overbooking”, vendendo um número de passagens superior ao número de assentos disponíveis na aeronave, a fim de maximizar seu retorno, já que existe a expectativa de que nem todos os passageiros se apresentem na hora do embarque. Tais passageiros são classificados como “no-show”.</p>
+<p><span class="theorem-title"><strong>Exemplo 27</strong></span> <br> Companhias aéreas costumam praticar “overbooking”, vendendo um número de passagens superior ao número de assentos disponíveis na aeronave, a fim de maximizar seu retorno, já que existe a expectativa de que nem todos os passageiros se apresentem na hora do embarque. Tais passageiros são classificados como “no-show”.</p>
 <p>Suponha que tenham sido emitidas 200 passagens para um voo com capacidade para 197 passageiros e que a taxa de “no-show” para este voo seja de 2%.</p>
 <p>Qual a probabilidade de que haja <em>overbooking</em> para este voo, de forma que nem todos os passageiros que se apresentarem para embarque poderão viajar?</p>
 <p><em>Solução:</em></p>
@@ -2674,11 +3011,11 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 <span class="math inline">\(\approx 23.5\%\)</span></p>
 <p>Os cálculos são facilmente realizados com o auxílio do software R, utilizando qualquer dos comandos alternativos dados abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">198</span><span class="sc">:</span><span class="dv">200</span>, <span class="at">size =</span> <span class="dv">200</span>, <span class="at">prob =</span> <span class="fl">0.98</span>))  </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dbinom</span>(<span class="dv">198</span><span class="sc">:</span><span class="dv">200</span>, <span class="at">size =</span> <span class="dv">200</span>, <span class="at">prob =</span> <span class="fl">0.98</span>))  </span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2351481</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">200</span>, <span class="dv">200</span>, <span class="fl">0.98</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">197</span>, <span class="dv">200</span>, <span class="fl">0.98</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">200</span>, <span class="dv">200</span>, <span class="fl">0.98</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">197</span>, <span class="dv">200</span>, <span class="fl">0.98</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2351481</code></pre>
 </div>
@@ -2693,7 +3030,7 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -2706,7 +3043,7 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 <span class="math display">\[P[X &gt; 197] \approx P[Z &gt; z_1] = 1 - \Phi(z_1)  \approx 22.4\%,\]</span></p>
 <p>ou seja, a probabilidade desejada vale aproximadamente 22,4% e pode ser obtida numericamente no software R utilizando o comando fornecido abaixo.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">197.5</span>, <span class="at">mean =</span> <span class="dv">196</span>, <span class="at">sd =</span> <span class="fl">1.98</span>)  <span class="co"># com correção para continuidade</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="fl">197.5</span>, <span class="at">mean =</span> <span class="dv">196</span>, <span class="at">sd =</span> <span class="fl">1.98</span>)  <span class="co"># com correção para continuidade</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2243525</code></pre>
 </div>
@@ -2722,7 +3059,7 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 <p><span class="math inline">\(P[X &gt; 197] \approx P[Y \leq 2] = \sum_{x=0}^{2} Pois (x, \lambda = nq) =\ldots \approx 23.8\%\)</span></p>
 <p>Este valor de probabilidade é obtido utilizando o software R através do seguinte comando:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dpois</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">lambda =</span> <span class="dv">4</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">dpois</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">lambda =</span> <span class="dv">4</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2381033</code></pre>
 </div>
@@ -2732,7 +3069,7 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -2740,28 +3077,28 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 <p><strong>Utilizando Simulação:</strong></p>
 <p>Podemos ainda estimar essa probabilidade via simulação. Para isso, basta gerar uma grande quantidade de realizações da v.a. Binomial, com parâmetros <span class="math inline">\(n = 200\)</span> e <span class="math inline">\(p = 0,98\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Nsim <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co"># no. de voos simulados</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>Nrep <span class="ot">&lt;-</span> <span class="dv">100</span>  <span class="co"># no. de replicações</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>simula_voo <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rbinom</span>(Nsim<span class="sc">*</span>Nrep, <span class="at">size =</span> <span class="dv">200</span>, <span class="at">prob =</span> <span class="fl">0.98</span>),</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ncol =</span> Nrep)</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>              <span class="co"># cada coluna armazena uma replicação de</span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>              <span class="co"># 'Nsim' voos simulados</span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="co"># condição de overbooking:</span></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>overbook <span class="ot">&lt;-</span> simula_voo <span class="sc">&gt;</span> <span class="dv">197</span></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co"># calcula freq. de overbooking observada</span></span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="co"># para cada replicação de 'Nsim' voos simulados</span></span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>frel_overbook <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(overbook) </span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Histograma com as estimativas para P[X &gt; 197]</span></span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(frel_overbook, <span class="at">freq=</span><span class="cn">FALSE</span>,</span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">density =</span> <span class="dv">25</span>,</span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span>,</span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Freq. relativa de 'overbooking'"</span>, </span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">""</span>,</span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"gray"</span>)</span>
-<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(frel_overbook), <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="st">"dashed"</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>Nsim <span class="ot">&lt;-</span> <span class="dv">1000</span> <span class="co"># no. de voos simulados</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>Nrep <span class="ot">&lt;-</span> <span class="dv">100</span>  <span class="co"># no. de replicações</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>simula_voo <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">rbinom</span>(Nsim<span class="sc">*</span>Nrep, <span class="at">size =</span> <span class="dv">200</span>, <span class="at">prob =</span> <span class="fl">0.98</span>),</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ncol =</span> Nrep)</span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>              <span class="co"># cada coluna armazena uma replicação de</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>              <span class="co"># 'Nsim' voos simulados</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="co"># condição de overbooking:</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>overbook <span class="ot">&lt;-</span> simula_voo <span class="sc">&gt;</span> <span class="dv">197</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="co"># calcula freq. de overbooking observada</span></span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="co"># para cada replicação de 'Nsim' voos simulados</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>frel_overbook <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(overbook) </span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Histograma com as estimativas para P[X &gt; 197]</span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(frel_overbook, <span class="at">freq=</span><span class="cn">FALSE</span>,</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">density =</span> <span class="dv">25</span>,</span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">yaxt =</span> <span class="st">"n"</span>,</span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Freq. relativa de 'overbooking'"</span>, </span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">""</span>, <span class="at">ylab =</span> <span class="st">""</span>,</span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">col=</span><span class="st">"gray"</span>)</span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(frel_overbook), <span class="at">col =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="st">"dashed"</span>, <span class="at">lwd =</span> <span class="dv">3</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Os valores simulados são organizados na matriz <code>simula_voo</code>, tal que cada coluna corresponde a uma replicação da simulação de <code>Nsim</code> voos simulados. Há portanto, um total de <code>Nsim</code> linhas e <code>Nrep</code> colunas.</p>
 <p>Cada elemento de <code>simula_voo</code> corresponde ao número de passageiros que se apresentaram para o embarque em um voo simulado. Verificamos se cada um desses voos resultou em <em>overbooking</em> e registramos a frequência relativa de <em>overbooking</em> em cada coluna, isto é, em cada replicação da simulação. Cada frequência relativa calculada corresponde a uma estimativa para a probabilidade de <span class="math inline">\(X &gt; 197\)</span>. Com isso, obtemos um número igual a <code>Nrep</code> estimativas para esta probabilidade. O histograma representa a distribuição das frequências relativas de <em>overbooking</em> observadas nas <code>Nrep</code> replicações. Veja que o centro da distribuição amostral é bem próximo do valor de probabilidade que desejamos calcular.</p>
@@ -2769,7 +3106,7 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -2793,13 +3130,13 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 </div>
 <div class="callout-body-container">
 <div id="exm-" class="theorem example">
-<p><span class="theorem-title"><strong>Exemplo 23</strong></span> <br> Os dados se referem a 100 medidas de consumo de combustível de um tipo de automóvel de passeio. O primeiro passo consiste em carregar os dados e analisar o resumo numérico.</p>
+<p><span class="theorem-title"><strong>Exemplo 28</strong></span> <br> Os dados se referem a 100 medidas de consumo de combustível de um tipo de automóvel de passeio. O primeiro passo consiste em carregar os dados e analisar o resumo numérico.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carrega dados</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>consumo <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"data/CONSUMO.txt"</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># produz resumo numérico dos dados</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(consumo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># carrega dados</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>consumo <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"data/CONSUMO.txt"</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># produz resumo numérico dos dados</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(consumo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
   12.76   15.17   15.73   15.73   16.29   19.09 </code></pre>
@@ -2807,28 +3144,28 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 </div>
 <p>Como uma primeira verificação de normalidade, vamos examinar o histograma que representa a distribuição dos valores de consumo de combustível registrados. A curva normal correspondente é sobreposta ao histograma. Claramente, a distribuição dos dados de consumo de combustível é unimodal em torno da média (que vale 15.73, conforme mostra o resumo numérico dos dados); além disso, a distribuição é aparentemente simétrica (a média é igual à mediana) com formato aproximado de sino.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># constroi histograma de freq. relativa</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(consumo, <span class="at">freq =</span> <span class="cn">FALSE</span>,  <span class="at">main =</span> <span class="st">""</span>, </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Freq. Relativa"</span>, <span class="at">xlab =</span> <span class="st">"km/l"</span>)</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">mean</span>(consumo)</span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sd</span>(consumo)</span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(<span class="fu">dnorm</span>(x, m, s), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># constroi histograma de freq. relativa</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(consumo, <span class="at">freq =</span> <span class="cn">FALSE</span>,  <span class="at">main =</span> <span class="st">""</span>, </span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Freq. Relativa"</span>, <span class="at">xlab =</span> <span class="st">"km/l"</span>)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>  m <span class="ot">&lt;-</span> <span class="fu">mean</span>(consumo)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sd</span>(consumo)</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(<span class="fu">dnorm</span>(x, m, s), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calcula amplitude interquartis</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>IQR <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">quantile</span>(consumo, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))) </span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># razão entre amplitude interquartis e desvio-padrão amostral</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>IQR<span class="sc">/</span><span class="fu">sd</span>(consumo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calcula amplitude interquartis</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>IQR <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">quantile</span>(consumo, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>))) </span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># razão entre amplitude interquartis e desvio-padrão amostral</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>IQR<span class="sc">/</span><span class="fu">sd</span>(consumo)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     75% 
 1.092566 </code></pre>
@@ -2837,18 +3174,18 @@ P[Z &lt; <span class="math inline">\(z_1\)</span> ] = 0,02275 e P[Z &lt; <span c
 <p>A razão entre a amplitude interquartis e o desvio-padrão amostral é um pouco menor que 1.3; isso significa que a distribuição amostral é um pouco menos espalhada que a distribuição normal.</p>
 <p>Por fim, analisemos o gráfico de quantis, também chamado de gráfico de probabilidades.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># produz gráfico de quantis</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(consumo, </span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">""</span>, </span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># adiciona reta de referência</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(consumo, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># produz gráfico de quantis</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(consumo, </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">""</span>, </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">19</span>)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="co"># adiciona reta de referência</span></span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(consumo, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<p><img src="MB751_AULA02_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 </div>
